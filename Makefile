@@ -77,7 +77,13 @@ dev:
 
 # 静的サイトを生成（SSG）
 generate:
-	docker compose run --rm $(FRONT_CONTAINER) npm run generate
+	@echo "🟡 静的サイト生成前に実行中のコンテナを一時停止します..."
+	@docker compose stop $(FRONT_CONTAINER) 2>/dev/null || true
+	@echo "🟢 ホスト側のapp/.outputディレクトリを削除します..."
+	@rm -rf app/.output || true
+	@echo "🟢 静的サイトを生成中..."
+	docker compose run --rm --no-deps $(FRONT_CONTAINER) npm run generate
+	@echo "✅ 静的サイトの生成が完了しました"
 
 # 生成された静的サイトをプレビュー
 preview:
@@ -101,6 +107,13 @@ format-check:
 
 # 生成ファイルとnode_modulesを削除
 clean:
-	rm -rf node_modules .nuxt .output dist
-	docker compose down -v
+	@echo "🟡 コンテナを停止します..."
+	@docker compose stop $(FRONT_CONTAINER) 2>/dev/null || true
+	@echo "🟢 コンテナ内で生成ファイルを削除します..."
+	@docker compose run --rm --no-deps $(FRONT_CONTAINER) sh -c "rm -rf .nuxt .output dist .nitro .data .cache" 2>/dev/null || true
+	@echo "🟢 ホスト側の生成ファイルを削除します..."
+	@rm -rf app/node_modules app/.nuxt app/.output app/dist app/.nitro app/.data app/.cache || true
+	@echo "🟢 コンテナ・ボリューム・イメージを削除します..."
+	docker compose down --rmi all --volumes --remove-orphans
+	@echo "✅ クリーンアップが完了しました"
 

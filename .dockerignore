@@ -1,8 +1,14 @@
+# app配下の生成ファイル
 node_modules
 npm-debug.log
 .nuxt
 .output
 dist
+.nitro
+.data
+.cache
+
+# その他
 .DS_Store
 .env
 .env.local

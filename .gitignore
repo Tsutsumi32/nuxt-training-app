@@ -1,10 +1,11 @@
-# Nuxt dev/build outputs
-.output
-.data
-.nuxt
-.nitro
-.cache
-dist
+# Nuxt dev/build outputs (app配下)
+app/.output
+app/.data
+app/.nuxt
+app/.nitro
+app/.cache
+app/dist
+app/node_modules
 
 # Node dependencies
 node_modules

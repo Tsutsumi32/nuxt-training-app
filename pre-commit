@@ -75,39 +75,47 @@ CSS_FILES=""
 SCSS_FILES=""
 
 for file in $STAGED_FILES; do
-  # .nuxt, .output, node_modulesなどは除外
-  if echo "$file" | grep -qE "^(\.nuxt|\.output|node_modules|dist)/"; then
+  # app/配下のファイルのみを処理対象とする
+  if ! echo "$file" | grep -qE "^app/"; then
     continue
   fi
   
+  # .nuxt, .output, node_modulesなどは除外
+  if echo "$file" | grep -qE "(\.nuxt|\.output|node_modules|dist)/"; then
+    continue
+  fi
+  
+  # app/プレフィックスを削除してコンテナ内のパスに変換
+  container_file="${file#app/}"
+  
   # Vueファイルを抽出
   if echo "$file" | grep -qE "\.vue$"; then
-    VUE_FILES="$VUE_FILES $file"
+    VUE_FILES="$VUE_FILES $container_file"
   fi
   
   # TypeScriptファイルを抽出
   if echo "$file" | grep -qE "\.ts$"; then
-    TS_FILES="$TS_FILES $file"
+    TS_FILES="$TS_FILES $container_file"
   fi
   
   # JavaScriptファイルを抽出
   if echo "$file" | grep -qE "\.(js|cjs|mjs)$"; then
-    JS_FILES="$JS_FILES $file"
+    JS_FILES="$JS_FILES $container_file"
   fi
   
   # JSONファイルを抽出
   if echo "$file" | grep -qE "\.json$"; then
-    JSON_FILES="$JSON_FILES $file"
+    JSON_FILES="$JSON_FILES $container_file"
   fi
   
   # CSSファイルを抽出
   if echo "$file" | grep -qE "\.css$"; then
-    CSS_FILES="$CSS_FILES $file"
+    CSS_FILES="$CSS_FILES $container_file"
   fi
   
   # SCSSファイルを抽出
   if echo "$file" | grep -qE "\.(scss|sass)$"; then
-    SCSS_FILES="$SCSS_FILES $file"
+    SCSS_FILES="$SCSS_FILES $container_file"
   fi
 done
 
@@ -122,11 +130,11 @@ if [ -n "$ALL_FORMAT_FILES" ]; then
   for file in $ALL_FORMAT_FILES; do
     # コンテナ内でprettierを実行してファイルを整形
     docker exec "${CONTAINER_NAME}" npx prettier --write "/app/${file}" 2>/dev/null || {
-      echo "⚠️  ${file} の整形に失敗しました（無視して続行）"
+      echo "⚠️  app/${file} の整形に失敗しました（無視して続行）"
     }
     
-    # 整形後のファイルをステージングに追加
-    git add "$file" 2>/dev/null || true
+    # 整形後のファイルをステージングに追加（app/プレフィックスを追加）
+    git add "app/${file}" 2>/dev/null || true
   done
 fi
 
@@ -140,18 +148,18 @@ if [ -n "$ALL_LINT_FILES" ]; then
   echo "🔧 ファイルをESLintで修正中..."
   for file in $ALL_LINT_FILES; do
     # .nuxt, .output, node_modulesなどは除外
-    if echo "$file" | grep -qE "^(\.nuxt|\.output|node_modules|dist)/"; then
+    if echo "$file" | grep -qE "(\.nuxt|\.output|node_modules|dist)/"; then
       continue
     fi
     
     # コンテナ内でeslint --fixを実行して自動修正
     docker exec "${CONTAINER_NAME}" npx eslint --fix "/app/${file}" 2>/dev/null || {
-      echo "⚠️  ${file} のLintチェックでエラーが見つかりました。修正してからコミットしてください。"
+      echo "⚠️  app/${file} のLintチェックでエラーが見つかりました。修正してからコミットしてください。"
       # エラーがあっても続行（自動修正できないエラーの場合）
     }
     
-    # 修正後のファイルをステージングに追加
-    git add "$file" 2>/dev/null || true
+    # 修正後のファイルをステージングに追加（app/プレフィックスを追加）
+    git add "app/${file}" 2>/dev/null || true
   done
 fi
 

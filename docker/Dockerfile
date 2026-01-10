@@ -53,6 +53,11 @@ ENV NODE_ENV=development
 # 開発環境ではボリュームマウントを使用するため、package.jsonのみコピー
 COPY package*.json ./
 
+# もし権限が必要なら、rootのままchownしてから node に切り替える
+RUN mkdir -p /app && chown -R node:node /app
+
+USER node
+
 RUN npm install
 
 EXPOSE 3000

@@ -136,23 +136,27 @@ nuxt-training-app/
 ├── .dockerignore          # Dockerビルド時に除外するファイル
 ├── .env                   # 環境変数設定（.gitignoreに含まれる）
 ├── .env-example           # 環境変数設定のサンプル
-├── .eslintignore          # ESLintチェックから除外するファイル
-├── .eslintrc.cjs          # ESLint設定ファイル
-├── .prettierignore        # Prettier整形から除外するファイル
-├── .prettierrc            # Prettier設定ファイル
+├── .gitignore             # Git除外ファイル
 ├── docker/                # Docker関連ファイル
 │   └── Dockerfile         # Dockerイメージの定義
 ├── docker-compose.yml     # Docker Composeの設定（環境変数対応）
 ├── Makefile               # コマンド管理用Makefile（環境変数対応）
-├── nuxt.config.ts         # Nuxtの設定ファイル（SSG設定）
-├── package.json           # プロジェクトの依存関係
 ├── pre-commit             # Git pre-commitフック（自動整形・Lint）
-├── tsconfig.json          # TypeScript設定ファイル
-├── app.vue                # アプリケーションのルートコンポーネント
-├── pages/                 # ページコンポーネント
-│   └── index.vue          # トップページ
-└── README.md              # このファイル
+├── README.md              # このファイル
+└── app/                   # Nuxtアプリケーションのソースコード
+    ├── .eslintignore      # ESLintチェックから除外するファイル
+    ├── .eslintrc.cjs      # ESLint設定ファイル
+    ├── .prettierignore    # Prettier整形から除外するファイル
+    ├── .prettierrc        # Prettier設定ファイル
+    ├── nuxt.config.ts     # Nuxtの設定ファイル（SSG設定）
+    ├── package.json       # プロジェクトの依存関係
+    ├── tsconfig.json      # TypeScript設定ファイル
+    ├── app.vue            # アプリケーションのルートコンポーネント
+    └── pages/             # ページコンポーネント
+        └── index.vue      # トップページ
 ```
+
+**注意**: プロジェクトは環境ファイル群（ルート直下）とNuxtアプリケーションのソースコード（`app/`配下）が分離されています。
 
 ## 🐳 Docker環境について
 
@@ -184,7 +188,7 @@ Dockerfileは`docker/Dockerfile`に配置されており、以下のステージ
 make generate
 ```
 
-生成されたファイルは`.output/public`ディレクトリに出力されます。
+生成されたファイルは`app/.output/public`ディレクトリに出力されます。
 
 生成されたサイトをプレビューするには：
 
@@ -198,8 +202,7 @@ make preview
 
 プロジェクトでは、Nuxt 3/4に最適化されたESLint設定を使用しています。
 
-- **設定ファイル**: `.eslintrc.cjs`
-- **Nuxt用の設定**: `@nuxtjs/eslint-config-typescript`を使用
+- **設定ファイル**: `app/.eslintrc.cjs`
 - **チェック**: `make lint`
 - **自動修正**: `make lint-fix`
 
@@ -207,7 +210,7 @@ make preview
 
 コードの整形にはPrettierを使用しています。
 
-- **設定ファイル**: `.prettierrc`
+- **設定ファイル**: `app/.prettierrc`
 - **整形**: `make format`
 - **整形状況チェック**: `make format-check`
 
