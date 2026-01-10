@@ -1,0 +1,19 @@
+services:
+  nuxt:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+      target: dev
+    container_name: ${CONTAINER_NAME:-nuxt-portfolio}
+    ports:
+      - "${HOST_PORT:-3000}:${CONTAINER_PORT:-3000}"
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.output
+    environment:
+      - NODE_ENV=${NODE_ENV:-development}
+    stdin_open: true
+    tty: true
+    command: npm run dev
+
