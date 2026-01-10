@@ -152,8 +152,26 @@ nuxt-training-app/
     ├── package.json       # プロジェクトの依存関係
     ├── tsconfig.json      # TypeScript設定ファイル
     ├── app.vue            # アプリケーションのルートコンポーネント
-    └── pages/             # ページコンポーネント
-        └── index.vue      # トップページ
+    ├── assets/            # 静的アセット（CSS、画像など）
+    │   ├── css/           # スタイルシート
+    │   │   └── main.css   # メインスタイル
+    │   └── images/        # 画像ファイル
+    ├── components/        # 再利用可能なコンポーネント
+    │   ├── Button.vue     # ボタンコンポーネント
+    │   ├── Header.vue     # ヘッダーコンポーネント
+    │   └── Footer.vue     # フッターコンポーネント
+    ├── composables/       # コンポーザブル関数
+    │   └── useTheme.ts    # テーマ管理のコンポーザブル
+    ├── layouts/           # レイアウトコンポーネント
+    │   └── default.vue    # デフォルトレイアウト（Header + Footer）
+    ├── pages/             # ページコンポーネント（自動ルーティング）
+    │   ├── index.vue      # トップページ（/）
+    │   ├── about.vue      # Aboutページ（/about）
+    │   ├── works.vue      # Worksページ（/works）
+    │   └── contact.vue    # Contactページ（/contact）
+    ├── public/            # 公開される静的ファイル
+    └── utils/             # ユーティリティ関数
+        └── formatters.ts  # フォーマッター関数
 ```
 
 **注意**: プロジェクトは環境ファイル群（ルート直下）とNuxtアプリケーションのソースコード（`app/`配下）が分離されています。
@@ -189,6 +207,51 @@ make generate
 ```
 
 生成されたファイルは`app/.output/public`ディレクトリに出力されます。
+
+## 📁 作成されたディレクトリ構造
+
+### `components/`
+再利用可能なコンポーネントを配置します。
+
+- **Button.vue**: 様々なバリアントとサイズを持つボタンコンポーネント
+- **Header.vue**: ナビゲーション付きヘッダーコンポーネント
+- **Footer.vue**: フッターコンポーネント（リンク、連絡先情報など）
+
+### `layouts/`
+ページ全体のレイアウトを定義します。
+
+- **default.vue**: デフォルトレイアウト（Header + Footerを含む）
+  - すべてのページで自動的に適用されます
+  - カスタムレイアウトを作成することで上書き可能です
+
+### `pages/`
+ページコンポーネントを配置します（ファイルベースルーティング）。
+
+- **index.vue**: トップページ（`/`）
+- **about.vue**: Aboutページ（`/about`）
+- **works.vue**: Worksページ（`/works`）
+- **contact.vue**: Contactページ（`/contact`）
+
+### `composables/`
+再利用可能なロジック（コンポーザブル）を配置します。
+
+- **useTheme.ts**: テーマ管理（ダークモード/ライトモード切り替えなど）
+
+### `utils/`
+ユーティリティ関数を配置します。
+
+- **formatters.ts**: 日付、数値、文字列のフォーマット関数
+
+### `assets/`
+CSS、画像などの静的アセットを配置します。
+
+- **css/main.css**: メインスタイルシート（グローバルスタイル、ユーティリティクラスなど）
+- **images/**: 画像ファイル（必要に応じて使用）
+
+### `public/`
+公開される静的ファイルを配置します（直接URLでアクセス可能）。
+
+- favicon.icoなどの静的ファイル
 
 生成されたサイトをプレビューするには：
 

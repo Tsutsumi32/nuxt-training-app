@@ -7,6 +7,10 @@ export
 # デフォルト値の設定
 FRONT_CONTAINER ?= nuxt
 CONTAINER_NAME ?= nuxt-portfolio
+HOST_PORT ?= 3000
+CONTAINER_PORT ?= 3000
+PREVIEW_HOST_PORT ?= 3001
+PREVIEW_CONTAINER_PORT ?= 3000
 
 # デフォルトターゲット
 help:
@@ -19,9 +23,9 @@ help:
 	@echo "  make logs       - コンテナのログを表示"
 	@echo "  make shell      - コンテナ内のシェルにアクセス"
 	@echo "  make install    - 依存関係をインストール"
-	@echo "  make dev        - 開発サーバーを起動"
+	@echo "  make dev        - 開発サーバーを起動 (http://localhost:$(HOST_PORT))"
 	@echo "  make generate   - 静的サイトを生成（SSG）"
-	@echo "  make preview    - 生成された静的サイトをプレビュー"
+	@echo "  make preview    - 生成された静的サイトをプレビュー (http://localhost:$(PREVIEW_HOST_PORT))"
 	@echo "  make lint       - ESLintでコードをチェック"
 	@echo "  make format     - Prettierでコードを整形"
 	@echo "  make clean      - 生成ファイルとnode_modulesを削除"
@@ -73,6 +77,8 @@ install:
 
 # 開発サーバーを起動（フォアグラウンド）
 dev:
+	@echo "🟢 開発サーバーを起動中..."
+	@echo "📍 開発サーバー: http://localhost:$(HOST_PORT)"
 	docker compose up
 
 # 静的サイトを生成（SSG）
@@ -87,7 +93,15 @@ generate:
 
 # 生成された静的サイトをプレビュー
 preview:
-	docker compose run --rm -p ${HOST_PORT:-3000}:${CONTAINER_PORT:-3000} $(FRONT_CONTAINER) npm run preview
+	@if [ ! -d "app/.output" ]; then \
+		echo "❌ .outputディレクトリが見つかりません。"; \
+		echo "🟡 静的サイトを生成します..."; \
+		$(MAKE) generate; \
+	fi
+	@echo "🟢 プレビューサーバーを起動中..."
+	@echo "📍 開発サーバー: http://localhost:$(HOST_PORT)"
+	@echo "📍 プレビューサーバー: http://localhost:$(PREVIEW_HOST_PORT)"
+	docker compose run --rm -p $(PREVIEW_HOST_PORT):$(PREVIEW_CONTAINER_PORT) $(FRONT_CONTAINER) npm run preview
 
 # ESLintでコードをチェック
 lint:
