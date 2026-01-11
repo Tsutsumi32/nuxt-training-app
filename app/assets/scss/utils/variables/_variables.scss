@@ -149,33 +149,33 @@ $style-settings: (
 /* section
 ----------------------------------------------------------------- */
 // セクションサイズの定義
-// キー: サイズ名（ly_sectionの モディファイアクラス名として使用）
+// キー: サイズ名（sectionのモディファイアクラス名として使用）
 // 値:
 //   - 'default': メディアクエリを使用しない時のデフォルト値（sp-first/pc-first共通）
 //   - $breakpointsのキー名 : 該当のメディアクエリで値を設定
 // 単位なし => s(数値)
 $section-sizes: (
   'normal': (
-    'default': 30,
-    #{$bp_tab}: 100,
-    #{$bp_pc}: 300,
+    'default': 100,
+    #{$bp_tab}: 120,
+    #{$bp_pc}: 140,
   ),
   'large': (
-    'default': 50,
-    #{$bp_tab}: 100,
-    #{$bp_pc}: 300,
+    'default': 100,
+    #{$bp_tab}: 120,
+    #{$bp_pc}: 160,
   ),
   'xlarge': (
-    'default': 50,
-    #{$bp_tab}: 100,
-    #{$bp_pc}: 300,
+    'default': 100,
+    #{$bp_tab}: 120,
+    #{$bp_pc}: 180,
   ),
 );
 
 /* container
 ----------------------------------------------------------------- */
 // コンテナサイズの定義
-// キー: コンテナの種類（ly_container のモディファイアクラス名として使用）
+// キー: コンテナの種類（containerのモディファイアクラス名として使用）
 // 値:
 //   - 'default': メディアクエリを使用しない時のデフォルト値（sp-first/pc-first共通）
 //   - $breakpointsのキー名 : 該当のメディアクエリで値を設定
@@ -185,16 +185,16 @@ $section-sizes: (
 $container-sizes: (
   'normal': (
     'default': (
-      'padding': 30,
+      'padding': 20,
       'max-width': null,
     ),
     #{$bp_tab}: (
-        'padding': 80,
+        'padding': 50,
         'max-width': null,
       ),
     #{$bp_pc}: (
-        'padding': 120,
-        'max-width': 1200px,
+        'padding': 60,
+        'max-width': 1100px,
       ),
   ),
 );
@@ -302,7 +302,7 @@ $colors: (
 ) !default;
 
 // モード選択用変数
-$color_mode_dark: 'dark';
+$theme_dark: 'dark';
 
 /******************************************************************
 * color-var CSS変数を返す function
@@ -522,8 +522,8 @@ $image_path_svg: '../../assets/images/svg/';
 
 /* height
 ----------------------------------------------------------------- */
-$height_header_pc: 80;
-$height_header_sp: 80;
+$height_header_pc: 70;
+$height_header_sp: 60;
 
 /* transition
 ----------------------------------------------------------------- */

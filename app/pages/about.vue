@@ -19,7 +19,7 @@
   </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .about-page {
   min-height: 100vh;
 }

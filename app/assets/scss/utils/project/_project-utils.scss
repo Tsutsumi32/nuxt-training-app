@@ -1,4 +1,8 @@
 @use '../variables/variables' as *;
+@use '../functions/style-settings' as *;
 /******************************************************************
 * プロジェクト固有のutilsを記載する
 *******************************************************************/
+@mixin lightShadow() {
+  text-shadow: s(4) s(3) 0 $color_base_accent;
+}

@@ -14,7 +14,12 @@
             />
           </div>
           <div class="works-detail-mv__info-wrapper">
-            <h1 class="works-detail-mv__title" v-html="work.title"></h1>
+            <h1 class="works-detail-mv__title">
+              <template v-for="(line, index) in work.title.split(/<br\s*\/?>/i)" :key="index">
+                <template v-if="Number(index) > 0"><br /></template>
+                {{ line }}
+              </template>
+            </h1>
             <div class="works-detail-mv__info">
               <p class="works-detail-mv__client">{{ work.client }}</p>
               <div class="works-detail-mv__data-list">
@@ -168,7 +173,15 @@
                 />
               </div>
               <div class="works-detail-related__content">
-                <h3 class="works-detail-related__title-item" v-html="relatedWork.title"></h3>
+                <h3 class="works-detail-related__title-item">
+                  <template
+                    v-for="(line, index) in relatedWork.title.split(/<br\s*\/?>/i)"
+                    :key="index"
+                  >
+                    <template v-if="Number(index) > 0"><br /></template>
+                    {{ line }}
+                  </template>
+                </h3>
                 <p class="works-detail-related__client">{{ relatedWork.client }}</p>
               </div>
             </NuxtLink>
@@ -275,8 +288,6 @@ useHead(() => {
 </script>
 
 <style lang="scss" scoped>
-@use '../../../assets/scss/utils/index' as *;
-
 .works-detail-page {
   width: 100%;
 }
@@ -371,7 +382,7 @@ useHead(() => {
     font-family: $font-f_notosans;
     font-size: s(14);
     line-height: 1.5;
-    color: $color_base_black;
+    color: $color_text_primary;
     background-color: $color_base_white;
     padding: s(8) s(16);
     border-radius: s(100);
@@ -534,7 +545,7 @@ useHead(() => {
     font-weight: 700;
     font-size: s(14);
     line-height: 1.5;
-    color: $color_base_black;
+    color: $color_text_primary;
     background-color: $color_base_white;
     padding: s(8) s(16);
     border-radius: s(100);

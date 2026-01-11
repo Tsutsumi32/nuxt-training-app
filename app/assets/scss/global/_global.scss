@@ -50,7 +50,7 @@ select {
 
   option {
     padding-inline: 1rem;
-    color: $color_base_white;
+    color: $color_text_primary;
 
     &::checkmark {
       display: none;
@@ -58,12 +58,12 @@ select {
 
     &:checked {
       background-color: $color_base_accent !important;
-      color: $color_base_black;
+      color: $color_text_primary;
     }
 
     &:hover {
       background-color: $color_base_black;
-      color: $color_base_black;
+      color: $color_text_primary;
     }
   }
 }

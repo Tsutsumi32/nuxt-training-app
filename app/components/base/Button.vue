@@ -81,14 +81,13 @@ const buttonClasses = computed(() => {
 </script>
 
 <style lang="scss" scoped>
-@use '../../assets/scss/utils/index' as *;
-
 .button {
+  $_parent: &;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: s(8) solid $color_base_black;
-  border-radius: s(335544);
+  border: s(6) solid $color_base_black;
+  border-radius: 100vh;
   font-weight: 700;
   text-decoration: none;
   cursor: pointer;
@@ -96,93 +95,90 @@ const buttonClasses = computed(() => {
   font-family: $font-f_notosans;
   line-height: 1.333;
   text-align: center;
-  box-shadow: s(8) s(8) 0 0 rgba(0, 0, 0, 1);
+  box-shadow: s(2) s(5) 0 0 $color_base_black;
   background-color: $color_button_bg;
-  color: $color_base_black;
+  color: $color_text_primary;
 
   &:disabled,
   &[disabled],
-  &--disabled {
+  &#{$_parent}--disabled {
     opacity: 0.6;
     cursor: not-allowed;
     pointer-events: none;
   }
-}
 
-/* Variants */
-.button--primary {
-  background-color: $color_accent_primary;
-  color: $color_base_black;
-  border-color: $color_base_black;
+  /* Variants */
+  &#{$_parent}--primary {
+    background-color: $color_accent_primary;
+    color: $color_text_primary;
+    border-color: $color_base_black;
 
-  @include hover {
-    background-color: $color_accent_hover;
-    transform: translate(s(-2), s(-2));
-    box-shadow: s(10) s(10) 0 0 rgba(0, 0, 0, 1);
+    @include hover {
+      transform: translate(s(-2), s(-2));
+      box-shadow: s(8) s(8) 0 0 $color_base_black;
+    }
   }
-}
 
-.button--secondary {
-  background-color: $color_button_bg;
-  color: $color_base_black;
-  border-color: $color_base_black;
-
-  @include hover {
-    background-color: $color_bg_hover;
-  }
-}
-
-.button--outline {
-  background-color: transparent;
-  color: $color_text_primary;
-  border-color: $color_base_black;
-
-  @include hover {
+  &#{$_parent}--secondary {
     background-color: $color_button_bg;
+    color: $color_text_primary;
+    border-color: $color_base_black;
+
+    @include hover {
+      background-color: $color_bg_hover;
+    }
   }
-}
 
-.button--danger {
-  background-color: #dc3545;
-  color: $color_base_white;
-  border-color: $color_base_black;
+  &#{$_parent}--outline {
+    background-color: transparent;
+    color: $color_text_primary;
+    border-color: $color_base_black;
 
-  @include hover {
-    background-color: #c82333;
+    @include hover {
+      background-color: $color_button_bg;
+    }
   }
-}
 
-/* Sizes */
-.button--small {
-  padding: s(12) s(24);
-  font-size: s(14);
-}
+  &#{$_parent}--danger {
+    background-color: #dc3545;
+    color: $color_text_primary;
+    border-color: $color_base_black;
 
-.button--medium {
-  padding: s(16) s(32);
-  font-size: s(16);
-}
+    @include hover {
+      background-color: #c82333;
+    }
+  }
 
-.button--large {
-  padding: s(24) s(48);
-  font-size: s(24);
-}
+  /* Sizes */
+  &#{$_parent}--small {
+    padding: s(10) s(20);
+    font-size: s(14);
+  }
 
-/* Full width */
-.button--full {
-  width: 100%;
-}
+  &#{$_parent}--medium {
+    padding: s(16) s(32);
+    font-size: s(16);
+  }
 
-/* Active state */
-.button:active:not(:disabled) {
-  transform: translate(0, 0);
-  box-shadow: s(8) s(8) 0 0 rgba(0, 0, 0, 1);
-}
-
-@include media($bp_tab) {
-  .button--large {
-    padding: s(20) s(40);
+  &#{$_parent}--large {
+    padding: s(18) s(45);
     font-size: s(20);
+
+    @include media($bp_tab) {
+      padding: s(20) s(40);
+      font-size: s(20);
+    }
+  }
+
+  /* Full width */
+  &#{$_parent}--full {
+    width: 100%;
+  }
+
+  /* Active state */
+  &:active:not(:disabled) {
+    transform: translate(0, 0);
+    box-shadow: s(8) s(8) 0 0 rgba(0, 0, 0, 1);
   }
 }
 </style>

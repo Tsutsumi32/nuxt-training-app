@@ -1,92 +1,176 @@
 <template>
   <header class="header">
     <div class="header__container">
-      <NuxtLink to="/" class="header__brand">
-        <span class="header__brand-text">Figma</span>
-        <svg
-          class="header__brand-icon"
-          width="48"
-          height="48"
-          viewBox="0 0 48 48"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M20.5 10V38C20.5 39.933 18.933 41.5 17 41.5C15.067 41.5 13.5 39.933 13.5 38V10C13.5 8.067 15.067 6.5 17 6.5C18.933 6.5 20.5 8.067 20.5 10Z"
-            :fill="colorVar('base', 'black')"
-          />
-          <path
-            d="M34.5 17.5V38C34.5 39.933 32.933 41.5 31 41.5C29.067 41.5 27.5 39.933 27.5 38V17.5C27.5 15.567 29.067 14 31 14C32.933 14 34.5 15.567 34.5 17.5Z"
-            :fill="colorVar('base', 'black')"
-          />
-        </svg>
+      <NuxtLink to="/" class="header__brand" @click="closeMenu">
+        <img src="/images/logo.png" alt="Hero image" class="hero__image" />
       </NuxtLink>
-      <nav class="header__nav">
-        <NuxtLink to="/works" class="header__nav-link" :class="{ 'is-active': isActive('/works') }">
-          Works
-        </NuxtLink>
-        <NuxtLink to="/tools" class="header__nav-link" :class="{ 'is-active': isActive('/tools') }">
-          Tools
-        </NuxtLink>
-        <NuxtLink
-          to="/profile"
-          class="header__nav-link"
-          :class="{ 'is-active': isActive('/profile') }"
+      <div class="header__contents">
+        <nav ref="navElement" class="header__nav" :class="{ 'is-open': isMenuOpen }">
+          <NuxtLink
+            to="/profile"
+            class="header__nav-link"
+            :class="{ 'is-active': isActive('/profile') }"
+            @click="closeMenu"
+          >
+            About
+          </NuxtLink>
+          <NuxtLink
+            to="/works"
+            class="header__nav-link"
+            :class="{ 'is-active': isActive('/works') }"
+            @click="closeMenu"
+          >
+            Works
+          </NuxtLink>
+          <NuxtLink
+            to="/tools"
+            class="header__nav-link"
+            :class="{ 'is-active': isActive('/tools') }"
+            @click="closeMenu"
+          >
+            Tools
+          </NuxtLink>
+          <NuxtLink
+            to="/contact"
+            class="header__nav-link"
+            :class="{ 'is-active': isActive('/contact') }"
+            @click="closeMenu"
+          >
+            Contact
+          </NuxtLink>
+        </nav>
+        <button class="header__theme-toggle" aria-label="テーマ切り替え" @click="toggleTheme">
+          <span v-if="isDark" class="header__theme-icon">☀️</span>
+          <span v-else class="header__theme-icon">🌙</span>
+        </button>
+        <button
+          class="header__hamburger"
+          :class="{ 'is-open': isMenuOpen }"
+          aria-label="メニューを開く"
+          aria-expanded="isMenuOpen"
+          @click="toggleMenu"
         >
-          About
-        </NuxtLink>
-        <NuxtLink
-          to="/contact"
-          class="header__nav-link"
-          :class="{ 'is-active': isActive('/contact') }"
-        >
-          Contact
-        </NuxtLink>
-      </nav>
-      <button class="header__theme-toggle" aria-label="テーマ切り替え" @click="toggleTheme">
-        <span v-if="isDark" class="header__theme-icon">☀️</span>
-        <span v-else class="header__theme-icon">🌙</span>
-      </button>
+          <span class="header__hamburger-line"></span>
+          <span class="header__hamburger-line"></span>
+          <span class="header__hamburger-line"></span>
+        </button>
+      </div>
     </div>
+    <div v-show="isMenuOpen" ref="overlayElement" class="header__overlay" @click="closeMenu"></div>
   </header>
 </template>
 
 <script setup lang="ts">
+import { fadeIn, fadeOut } from '~/utils/fadeAnimation';
+
 const route = useRoute();
 const { isDark, toggleTheme } = useTheme();
+
+const isMenuOpen = ref(false);
+const navElement = ref<HTMLElement | null>(null);
+const overlayElement = ref<HTMLElement | null>(null);
 
 const isActive = (path: string) => {
   return route.path.startsWith(path);
 };
 
+const toggleMenu = () => {
+  isMenuOpen.value = !isMenuOpen.value;
+};
+
+const closeMenu = () => {
+  isMenuOpen.value = false;
+};
+
 const colorVar = (group: string, name: string) => {
   return `var(--color-${group}-${name})`;
 };
+
+// メニューの表示・非表示をfadeAnimationで制御
+watch(
+  () => isMenuOpen.value,
+  (newValue: boolean) => {
+    if (typeof window === 'undefined') return;
+
+    const navEl = navElement.value;
+    const overlayEl = overlayElement.value;
+
+    if (newValue) {
+      // メニューを開く
+      if (navEl) {
+        navEl.style.opacity = '0';
+        fadeIn(navEl, 300, false);
+      }
+      if (overlayEl) {
+        overlayEl.style.opacity = '0';
+        fadeIn(overlayEl, 300, false);
+      }
+    } else {
+      // メニューを閉じる
+      if (navEl) {
+        fadeOut(navEl, 300, false);
+      }
+      if (overlayEl) {
+        fadeOut(overlayEl, 300, false);
+      }
+    }
+  },
+  { immediate: false }
+);
+
+// ルート変更時にメニューを閉じる
+watch(
+  () => route.path,
+  () => {
+    closeMenu();
+  }
+);
 </script>
 
 <style lang="scss" scoped>
-@use '../../assets/scss/utils/index' as *;
-
 .header {
-  border-bottom: s(8) solid $color_base_black;
+  border: s(2) solid $color_base_accent;
   background-color: $color_bg_base;
-  position: sticky;
-  top: 0;
+  position: fixed;
+  top: s(16);
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 100;
+  border-radius: 100vh;
+  width: calc(100% - s(12));
+  height: s($height_header_sp);
+
+  @include media($bp_pc) {
+    height: s($height_header_pc);
+    width: calc(100% - s(20));
+  }
 
   &__container {
-    @include container;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-block: s(16);
-    padding-inline: s(108.5);
+    height: 100%;
+    width: 100%;
+    padding-inline: s(16);
     gap: s(40);
-    display: none;
+    position: relative;
 
     @include media($bp_tab) {
-      padding-inline: s(24);
       gap: s(16);
+    }
+
+    @include media($bp_pc) {
+      padding-inline: s(40);
+    }
+  }
+
+  &__contents {
+    display: flex;
+    align-items: center;
+    gap: s(16);
+
+    @include media($bp_pc) {
+      gap: s(30);
     }
   }
 
@@ -97,24 +181,54 @@ const colorVar = (group: string, name: string) => {
     text-decoration: none;
     color: inherit;
 
-    &-text {
-      font-family: $font-f_notosans;
-      font-weight: 500;
-      font-size: s(30);
-      line-height: 1.2;
-      letter-spacing: 0;
-      color: $color_text_dark;
-    }
+    img {
+      width: s(100);
+      @include media($bp_tab) {
+        width: s(120);
+      }
 
-    &-icon {
-      flex-shrink: 0;
+      @include media($bp_pc) {
+        width: s(150);
+      }
     }
   }
 
   &__nav {
-    display: flex;
     gap: s(8);
     align-items: center;
+    position: absolute;
+    top: calc(100% + s(8));
+    left: 0;
+    background-color: $color_bg_base;
+    border-radius: s(16);
+    box-shadow: s(0) s(8) s(24) rgba(0, 0, 0, 0.1);
+    padding: s(16);
+    flex-direction: column;
+    z-index: 101;
+    opacity: 0;
+    pointer-events: none;
+    width: 100%;
+    display: flex;
+
+    &.is-open {
+      pointer-events: auto;
+    }
+
+    @include media($bp_pc) {
+      position: static;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      background-color: transparent;
+      box-shadow: none;
+      padding: 0;
+      margin: 0;
+      transform: none;
+      opacity: 1 !important;
+      pointer-events: auto;
+      width: auto;
+    }
   }
 
   &__nav-link {
@@ -124,67 +238,132 @@ const colorVar = (group: string, name: string) => {
     font-size: s(18);
     line-height: 1.555;
     letter-spacing: 0;
-    color: $color_base_black;
+    color: $color_text_primary;
     text-decoration: none;
     background-color: $color_bg_base;
-    border: s(3) solid $color_accent_primary;
-    border-radius: s(8);
     transition: all $transition_normal;
     display: inline-block;
+    width: 100%;
+    text-align: center;
+    border-radius: s(8);
 
     @include hover {
-      background-color: $color_accent_light;
+      color: $color_accent_primary;
     }
 
     &.is-active,
     &.router-link-active,
     &.router-link-exact-active {
-      background-color: $color_accent_primary;
-      color: $color_base_black;
+      color: $color_accent_primary;
     }
 
-    @include media($bp_tab) {
-      padding: s(12) s(20);
-      font-size: s(16);
+    @include media($bp_pc) {
+      width: auto;
+      text-align: left;
+      padding: s(10) s(18);
     }
   }
 
   &__theme-toggle {
     background: transparent;
-    border: s(3) solid $color_accent_primary;
-    border-radius: s(8);
-    padding: s(12);
+    background-color: $color_accent_light;
+    border-radius: 100vh;
+    border: s(2) solid transparent;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all $transition_normal;
-    width: s(48);
-    height: s(48);
+    width: s(38);
+    height: s(38);
+
+    @include media($bp_pc) {
+      width: s(48);
+      height: s(48);
+    }
 
     @include hover {
-      background-color: $color_accent_light;
+      border: s(2) solid $color_accent_primary;
     }
   }
 
   &__theme-icon {
-    font-size: s(24);
+    font-size: s(20);
     line-height: 1;
-  }
 
-  @include media($bp_tab) {
-    &__brand-text {
+    @include media($bp_pc) {
       font-size: s(24);
     }
+  }
 
-    &__brand-icon {
-      width: s(40);
-      height: s(40);
+  &__hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: s(38);
+    height: s(38);
+    background: transparent;
+    border: s(2) solid transparent;
+    border-radius: 100vh;
+    background-color: $color_accent_light;
+    cursor: pointer;
+    gap: s(5);
+    padding: s(8);
+    transition: all $transition_normal;
+    position: relative;
+    z-index: 200;
+
+    @include media($bp_pc) {
+      display: none;
     }
 
-    &__nav {
-      flex-wrap: wrap;
-      justify-content: center;
+    @include hover {
+      border: s(2) solid $color_accent_primary;
+    }
+
+    &.is-open {
+      .header__hamburger-line {
+        &:nth-child(1) {
+          transform: translateY(s(7)) rotate(45deg);
+        }
+
+        &:nth-child(2) {
+          opacity: 0;
+        }
+
+        &:nth-child(3) {
+          transform: translateY(s(-7)) rotate(-45deg);
+        }
+      }
+    }
+  }
+
+  &__hamburger-line {
+    width: s(18);
+    height: s(2);
+    background-color: $color_base_black;
+    border-radius: s(2);
+    transition: all $transition_normal;
+
+    @include mode($theme_dark) {
+      background-color: $color_base_white;
+    }
+  }
+
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+    backdrop-filter: blur(s(2));
+    opacity: 0;
+
+    @include media($bp_pc) {
+      display: none;
     }
   }
 }

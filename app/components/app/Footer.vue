@@ -3,10 +3,10 @@
     <div class="footer__container">
       <div class="footer__main">
         <div class="footer__brand">
-          <div class="footer__brand-logo">
-            <span class="footer__brand-text">Figma</span>
+          <div class="footer__brand__logo">
+            <span class="footer__brand__text">Figma</span>
             <svg
-              class="footer__brand-icon"
+              class="footer__brand__icon"
               width="48"
               height="48"
               viewBox="0 0 48 48"
@@ -61,8 +61,6 @@ const colorVar = (group: string, name: string) => {
 </script>
 
 <style lang="scss" scoped>
-@use '../../assets/scss/utils/index' as *;
-
 .footer {
   border-top: s(4) solid $color_base_black;
   background-color: $color_bg_base;
@@ -101,18 +99,18 @@ const colorVar = (group: string, name: string) => {
     flex-direction: column;
     gap: s(24);
 
-    &-logo {
+    &__logo {
       display: flex;
       align-items: center;
       gap: s(12);
     }
 
-    &-text {
+    &__text {
       @include font('noto-sans-jp', 30, 1.2, 0, 400);
       color: $color_text_dark;
     }
 
-    &-icon {
+    &__icon {
       flex-shrink: 0;
     }
   }
@@ -167,13 +165,15 @@ const colorVar = (group: string, name: string) => {
   }
 
   @include media($bp_tab) {
-    &__brand-text {
-      font-size: s(24);
-    }
+    &__brand {
+      &__text {
+        font-size: s(24);
+      }
 
-    &__brand-icon {
-      width: s(40);
-      height: s(40);
+      &__icon {
+        width: s(40);
+        height: s(40);
+      }
     }
   }
 }

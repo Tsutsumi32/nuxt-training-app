@@ -9,8 +9,6 @@
 </template>
 
 <style lang="scss" scoped>
-@use '../assets/scss/utils/index' as *;
-
 .layout {
   min-height: 100vh;
   display: flex;

@@ -45,7 +45,12 @@
               <span class="works-item__category">{{ work.category.name }}</span>
             </div>
             <div class="works-item__content">
-              <h3 class="works-item__title" v-html="work.title"></h3>
+              <h3 class="works-item__title">
+                <template v-for="(line, index) in work.title.split(/<br\s*\/?>/i)" :key="index">
+                  <template v-if="Number(index) > 0"><br /></template>
+                  {{ line }}
+                </template>
+              </h3>
               <p class="works-item__client">{{ work.client }}</p>
             </div>
           </NuxtLink>
@@ -124,8 +129,6 @@ const selectCategory = (categoryId: string) => {
 </script>
 
 <style lang="scss" scoped>
-@use '../../../assets/scss/utils/index' as *;
-
 .works-page {
   width: 100%;
 }
@@ -218,7 +221,7 @@ const selectCategory = (categoryId: string) => {
 
     &.is-active {
       background-color: $color_accent_primary;
-      color: $color_base_black;
+      color: $color_text_primary;
       font-weight: 700;
     }
 
@@ -316,7 +319,7 @@ const selectCategory = (categoryId: string) => {
     font-family: $font-f_notosans;
     font-size: s(12);
     line-height: 1.4;
-    color: $color_base_black;
+    color: $color_text_primary;
     background-color: $color_base_white;
     padding: s(6) s(12);
     border-radius: s(100);

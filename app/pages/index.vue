@@ -1,188 +1,171 @@
 <template>
   <div class="home">
     <!-- Hero Section -->
-    <section class="home__hero hero">
-      <div class="hero__container">
-        <div class="hero__content">
-          <div class="hero__left">
-            <div class="hero__button-wrapper">
-              <BaseButton to="/works" class="hero__button"> 実績を見る </BaseButton>
-            </div>
-            <h1 class="hero__heading">
-              <span class="hero__heading-line">I design ✍️ top</span>
-              <span class="hero__heading-line hero__heading-line--highlight">
-                notch websites
-                <span class="hero__heading-underline"></span>
-              </span>
-            </h1>
-          </div>
-          <div class="hero__right">
-            <div class="hero__image-wrapper">
-              <img src="/images/hero/img_main2.jpg" alt="Hero image" class="hero__image" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <div class="hero">
+      <h1 class="hero__heading">
+        <span class="hero__heading__line">WEB UI <br class="hp_hidden_tab_" />DEVELOPER</span>
+        <span>TRAINING <br class="hp_hidden_tab_" />APP</span>
+      </h1>
+    </div>
 
     <!-- Profile Section -->
-    <section class="home__profile profile">
-      <div class="profile__container">
-        <div class="profile__content">
-          <div class="profile__image-wrapper">
-            <img src="/images/profile/img_profile.png" alt="Profile" class="profile__image" />
-          </div>
-          <div class="profile__text-wrapper">
-            <h2 class="profile__title">Profile</h2>
-            <p class="profile__description">
-              ポートフォリオサイトをご覧いただきありがとうございます。<br />
-              まず初めに、私のプロフィールを紹介いたします。<br />
-              1996年生まれ。理系の大学を卒業後、様々な業務を経験し、2021年にWEB業界へ参入。
-            </p>
-            <div class="profile__button">
-              <BaseButton to="/profile" variant="primary" size="large"> View Profile </BaseButton>
+    <section>
+      <div class="profile">
+        <BaseContainer>
+          <div class="profile__content">
+            <div class="profile__image-wrapper">
+              <img src="/images/profile/img_profile.png" alt="Profile" class="profile__image" />
+            </div>
+            <div class="profile__text-wrapper">
+              <h2 class="profile__title">Profile</h2>
+              <p class="profile__description">
+                ポートフォリオサイトをご覧いただきありがとうございます。<br />
+                まず初めに、私のプロフィールを紹介いたします。<br />
+                1996年生まれ。理系の大学を卒業後、様々な業務を経験し、2021年にWEB業界へ参入。
+              </p>
+              <div class="profile__button">
+                <BaseButton to="/profile" variant="primary" size="large"> View Profile </BaseButton>
+              </div>
             </div>
           </div>
-        </div>
+        </BaseContainer>
       </div>
     </section>
 
     <!-- Services Section -->
-    <section class="home__services services">
-      <div class="services__container">
-        <div class="services__header">
-          <p class="services__label">提供しているサービス 🙋</p>
-          <h2 class="services__title">クライアントに愛される</h2>
-        </div>
-        <div class="services__grid">
-          <div class="services__card">
-            <div class="services__icon">
-              <div class="services__icon-circle"></div>
-            </div>
-            <h3 class="services__card-title">WEBサイト制作</h3>
-            <p class="services__card-description">
-              WEBサイト制作を行います。デザイン制作から実装まで一貫して対応いたします。
-            </p>
-            <BaseButton href="#" variant="outline" size="small" class="services__card-button">
-              詳しく見る
-            </BaseButton>
+    <BaseSection padding="top">
+      <div class="services">
+        <BaseContainer>
+          <div class="services__header">
+            <BaseSectionTitle>SERVICE</BaseSectionTitle>
           </div>
-          <div class="services__card">
-            <div class="services__icon">
-              <div class="services__icon-circle services__icon-circle--secondary"></div>
-            </div>
-            <h3 class="services__card-title">LP・広告バナー</h3>
-            <p class="services__card-description">
-              ランディングページやバナーなど、販促用のクリエイティブ制作を行います。
-            </p>
-            <BaseButton href="#" variant="outline" size="small" class="services__card-button">
-              詳しく見る
-            </BaseButton>
-          </div>
-          <div class="services__card">
-            <div class="services__icon">
-              <div class="services__icon-circle"></div>
-            </div>
-            <h3 class="services__card-title">WEB制作協力</h3>
-            <p class="services__card-description">
-              制作会社様や同業個人様の、WEBサイト制作のお手伝いをいたします。
-            </p>
-            <BaseButton href="#" variant="outline" size="small" class="services__card-button">
-              詳しく見る
-            </BaseButton>
-          </div>
-          <div class="services__card">
-            <div class="services__icon">
-              <div class="services__icon-circle services__icon-circle--secondary"></div>
-            </div>
-            <h3 class="services__card-title">フロントエンド開発</h3>
-            <p class="services__card-description">
-              モダンな技術スタックを使用した、レスポンシブで高速なWebアプリケーションを開発します。
-            </p>
-            <BaseButton href="#" variant="outline" size="small" class="services__card-button">
-              詳しく見る
-            </BaseButton>
-          </div>
-        </div>
+          <ul class="services__grid">
+            <li class="services__card">
+              <h3 class="services__card-title">WEBサイト制作</h3>
+              <p class="services__card-description">
+                WEBサイト制作を行います。デザイン制作から実装まで一貫して対応いたします。
+              </p>
+              <BaseButton href="#" variant="outline" size="small" class="services__card-button">
+                詳しく見る
+              </BaseButton>
+            </li>
+            <li class="services__card">
+              <h3 class="services__card-title">LP・広告バナー</h3>
+              <p class="services__card-description">
+                ランディングページやバナーなど、販促用のクリエイティブ制作を行います。
+              </p>
+              <BaseButton href="#" variant="outline" size="small" class="services__card-button">
+                詳しく見る
+              </BaseButton>
+            </li>
+            <li class="services__card">
+              <h3 class="services__card-title">WEB制作協力</h3>
+              <p class="services__card-description">
+                制作会社様や同業個人様の、WEBサイト制作のお手伝いをいたします。
+              </p>
+              <BaseButton href="#" variant="outline" size="small" class="services__card-button">
+                詳しく見る
+              </BaseButton>
+            </li>
+            <li class="services__card">
+              <h3 class="services__card-title">フロントエンド開発</h3>
+              <p class="services__card-description">
+                モダンな技術スタックを使用した、レスポンシブで高速なWebアプリケーションを開発します。
+              </p>
+              <BaseButton href="#" variant="outline" size="small" class="services__card-button">
+                詳しく見る
+              </BaseButton>
+            </li>
+          </ul>
+        </BaseContainer>
       </div>
-    </section>
+    </BaseSection>
 
     <!-- Projects Section -->
-    <section class="home__projects projects">
-      <div class="projects__container">
-        <div class="projects__header">
-          <h2 class="projects__title">実績紹介</h2>
-        </div>
-        <div v-if="latestWorks.length > 0" class="projects__grid">
-          <NuxtLink
-            v-for="work in latestWorks"
-            :key="work.id"
-            :to="`/works/${work.id}`"
-            class="projects__card"
-          >
-            <div class="projects__card-image">
-              <img
-                :src="work.thumbnail.url"
-                :alt="work.title"
-                class="projects__card-img"
-                :width="work.thumbnail.width"
-                :height="work.thumbnail.height"
-              />
-            </div>
-            <div class="projects__card-content">
-              <div class="projects__card-text">
-                <h3 class="projects__card-title" v-html="work.title"></h3>
-                <p class="projects__card-category">{{ work.category.name }}</p>
-                <p class="projects__card-description">{{ work.client }}</p>
+    <BaseSection padding="top">
+      <div class="projects">
+        <BaseContainer>
+          <div class="projects__header">
+            <BaseSectionTitle>WORKS</BaseSectionTitle>
+          </div>
+          <div v-if="latestWorks.length > 0" class="projects__grid">
+            <NuxtLink
+              v-for="work in latestWorks"
+              :key="work.id"
+              :to="`/works/${work.id}`"
+              class="projects__card"
+            >
+              <div class="projects__card-image">
+                <img
+                  :src="work.thumbnail.url"
+                  :alt="work.title"
+                  class="projects__card-img"
+                  :width="work.thumbnail.width"
+                  :height="work.thumbnail.height"
+                />
               </div>
-              <div class="projects__card-arrow">
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M7.5 5L12.5 10L7.5 15"
-                    stroke="currentColor"
-                    stroke-width="1.67"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
+              <div class="projects__card-content">
+                <div class="projects__card-text">
+                  <h3 class="projects__card-title">
+                    <template v-for="(line, index) in work.title.split(/<br\s*\/?>/i)" :key="index">
+                      <template v-if="Number(index) > 0"><br /></template>
+                      {{ line }}
+                    </template>
+                  </h3>
+                  <p class="projects__card-category">{{ work.category.name }}</p>
+                  <p class="projects__card-description">{{ work.client }}</p>
+                </div>
+                <div class="projects__card-arrow">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M7.5 5L12.5 10L7.5 15"
+                      stroke="currentColor"
+                      stroke-width="1.67"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
               </div>
-            </div>
-          </NuxtLink>
-        </div>
-        <div v-else-if="isLoadingWorks" class="projects__loading">
-          <p>実績データを読み込み中...</p>
-        </div>
-        <div v-else class="projects__empty">
-          <p>実績データがありません</p>
-        </div>
-        <div class="projects__more">
-          <BaseButton to="/works" variant="primary" size="large"> すべての実績を見る </BaseButton>
-        </div>
+            </NuxtLink>
+          </div>
+          <div v-else-if="isLoadingWorks" class="projects__loading">
+            <p>実績データを読み込み中...</p>
+          </div>
+          <div v-else class="projects__empty">
+            <p>実績データがありません</p>
+          </div>
+          <div class="projects__more">
+            <BaseButton to="/works" variant="primary" size="large"> すべての実績を見る </BaseButton>
+          </div>
+        </BaseContainer>
       </div>
-    </section>
+    </BaseSection>
 
     <!-- Contact Section -->
-    <section class="home__contact contact">
-      <div class="contact__container">
-        <div class="contact__card">
-          <h2 class="contact__title">プロジェクトを始めましょう</h2>
-          <p class="contact__description">
-            何かお手伝いできることがあれば、お気軽にお問い合わせください。一緒に素晴らしいものを作りましょう。
-          </p>
-          <div class="contact__actions">
-            <BaseButton to="/contact" variant="primary" size="large" class="contact__button">
-              メッセージを送る
-            </BaseButton>
+    <BaseSection padding="top">
+      <div class="contact">
+        <BaseContainer>
+          <div class="contact__card">
+            <h2 class="contact__title">プロジェクトを始めましょう</h2>
+            <p class="contact__description">
+              何かお手伝いできることがあれば、お気軽にお問い合わせください。一緒に素晴らしいものを作りましょう。
+            </p>
+            <div class="contact__actions">
+              <BaseButton to="/contact" variant="primary" size="large" class="contact__button">
+                メッセージを送る
+              </BaseButton>
+            </div>
           </div>
-        </div>
+        </BaseContainer>
       </div>
-    </section>
+    </BaseSection>
   </div>
 </template>
 
@@ -215,28 +198,12 @@ const latestWorks = computed(() => latestWorksResponse.value?.contents || []);
 </script>
 
 <style lang="scss" scoped>
-@use '../../assets/scss/utils/index' as *;
-
 .home {
   width: 100%;
 }
 
 // Hero Section
-.home__hero {
-  padding-block: s(60) s(80);
-  background-color: $color_bg_base;
-
-  @include media($bp_tab) {
-    padding-block: s(40) s(60);
-  }
-}
-
 .hero {
-  &__container {
-    @include container;
-    max-width: 1200px;
-  }
-
   &__content {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -280,43 +247,53 @@ const latestWorks = computed(() => latestWorksResponse.value?.contents || []);
   }
 
   &__heading {
+    @include lightShadow;
     font-family: $font-f_rocknroll-one;
     font-weight: 500;
     font-size: s(48);
     line-height: 1.3;
     color: $color_text_primary;
     margin: 0;
-
-    @include media($bp_pc) {
-      font-size: s(56);
-    }
-
-    @include media($bp_pcL) {
-      font-size: s(64);
-    }
+    height: 100dvh;
+    padding-inline: s(16);
+    gap: s(4);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-bottom: s($height_header_sp - 30);
 
     @include media($bp_tab) {
-      font-size: s(32);
+      align-items: center;
     }
-  }
 
-  &__heading-line {
-    display: block;
-    margin-bottom: s(8);
+    @include media($bp_tabL) {
+      font-size: s(65);
+    }
 
-    &--highlight {
-      position: relative;
-      display: inline-block;
+    @include media($bp_pc) {
+      font-size: s(80);
+      padding-bottom: s($height_header_pc - 40);
+    }
 
-      .hero__heading-underline {
-        position: absolute;
-        bottom: s(4);
-        left: 0;
-        width: 100%;
-        height: s(12);
-        background-color: $color_base_accent;
-        z-index: -1;
-        opacity: 0.8;
+    &__line {
+      $_parent: &;
+      display: block;
+      margin-bottom: s(8);
+
+      &#{$_parent}--highlight {
+        position: relative;
+        display: inline-block;
+
+        &__underline {
+          position: absolute;
+          bottom: s(4);
+          left: 0;
+          width: 100%;
+          height: s(12);
+          background-color: $color_base_accent;
+          z-index: -1;
+          opacity: 0.8;
+        }
       }
     }
   }
@@ -356,47 +333,41 @@ const latestWorks = computed(() => latestWorksResponse.value?.contents || []);
 }
 
 // Profile Section
-.home__profile {
-  padding-block: s(80) s(60);
-  background-color: $color_bg_base;
-
-  @include media($bp_tab) {
-    padding-block: s(60) s(40);
-  }
-}
-
 .profile {
-  &__container {
-    @include container;
-    max-width: 1200px;
-  }
-
   &__content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
     gap: s(48);
-    align-items: center;
 
     @include media($bp_tab) {
-      grid-template-columns: 1fr;
       gap: s(32);
+      display: flex;
+      align-items: center;
+    }
+
+    @include media($bp_pc) {
+      gap: s(60);
     }
   }
 
   &__image-wrapper {
-    width: 100%;
+    width: 90%;
     max-width: s(400);
     aspect-ratio: 1 / 1;
     border-radius: 50%;
     overflow: hidden;
     border: s(4) solid $color_base_black;
-    box-shadow: s(-8) s(8) 0 0 rgba(0, 0, 0, 0.2);
+    box-shadow: s(-8) s(8) 0 0 rgba(#000, 0.2);
     margin: 0 auto;
     order: 2;
 
     @include media($bp_tab) {
       order: 1;
+      width: 40%;
+      height: fit-content;
       max-width: s(300);
+    }
+
+    @include mode($theme_dark) {
+      box-shadow: s(-8) s(8) 0 0 rgba(#fff, 0.2);
     }
   }
 
@@ -405,18 +376,17 @@ const latestWorks = computed(() => latestWorksResponse.value?.contents || []);
     height: 100%;
     object-fit: cover;
     display: block;
-    transform: scale(0.95);
   }
 
   &__text-wrapper {
     display: flex;
     flex-direction: column;
     gap: s(24);
-    order: 1;
-    text-align: center;
+    margin-top: s(30);
 
     @include media($bp_tab) {
-      order: 2;
+      flex-basis: 0;
+      flex-grow: 1;
     }
 
     @include media($bp_pc) {
@@ -427,13 +397,14 @@ const latestWorks = computed(() => latestWorksResponse.value?.contents || []);
   &__title {
     font-family: $font-f_rocknroll-one;
     font-weight: 500;
-    font-size: s(32);
+    font-size: s(40);
     line-height: 1.3;
     color: $color_text_primary;
     margin: 0;
+    text-align: center;
 
-    @include media($bp_pc) {
-      font-size: s(40);
+    @include media($bp_tab) {
+      text-align: left;
     }
   }
 
@@ -451,78 +422,29 @@ const latestWorks = computed(() => latestWorksResponse.value?.contents || []);
 
   &__button {
     margin-top: s(16);
+    width: fit-content;
+    margin-inline: auto;
 
     @include media($bp_tab) {
-      display: flex;
-      justify-content: center;
+      margin-inline: 0;
+      margin-top: 0;
     }
   }
 }
 
 // Services Section
-.home__services {
-  padding-block: s(80) s(60);
-  background-color: $color_bg_base;
-
-  @include media($bp_tab) {
-    padding-block: s(60) s(40);
-  }
-}
-
 .services {
-  &__container {
-    @include container;
-    max-width: 1200px;
-    display: flex;
-    flex-direction: column;
-    gap: s(40);
-
-    @include media($bp_tab) {
-      gap: s(32);
-    }
-  }
-
   &__header {
     display: flex;
     flex-direction: column;
     gap: s(8);
     align-items: center;
     text-align: center;
-    margin-bottom: s(16);
-  }
-
-  &__label {
-    font-family: $font-f_notosans;
-    font-size: s(18);
-    line-height: 1.5;
-    color: $color_text_primary;
-    margin: 0;
-
-    @include media($bp_pc) {
-      font-size: s(20);
-    }
-  }
-
-  &__title {
-    font-family: $font-f_rocknroll-one;
-    font-weight: 500;
-    font-size: s(40);
-    line-height: 1.2;
-    color: $color_text_primary;
-    margin: 0;
-
-    @include media($bp_pc) {
-      font-size: s(48);
-    }
-
-    @include media($bp_tab) {
-      font-size: s(32);
-    }
   }
 
   &__grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: s(4);
     padding: s(4);
     border: s(3) solid $color_base_black;
@@ -530,8 +452,12 @@ const latestWorks = computed(() => latestWorksResponse.value?.contents || []);
     border-radius: s(4);
 
     @include media($bp_tab) {
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(2, 1fr);
       border: s(3) solid $color_base_black;
+    }
+
+    @include media($bp_pc) {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 
@@ -582,19 +508,6 @@ const latestWorks = computed(() => latestWorksResponse.value?.contents || []);
     margin-bottom: s(8);
   }
 
-  &__icon-circle {
-    width: s(56);
-    height: s(56);
-    border-radius: 50%;
-    background-color: $color_accent_primary;
-    border: s(3) solid $color_base_black;
-    flex-shrink: 0;
-
-    &--secondary {
-      background-color: #c2c5ff;
-    }
-  }
-
   &__card-title {
     font-family: $font-f_rocknroll-one;
     font-weight: 700;
@@ -602,9 +515,29 @@ const latestWorks = computed(() => latestWorksResponse.value?.contents || []);
     line-height: 1.4;
     color: $color_text_primary;
     margin: 0;
+    display: flex;
+    align-items: center;
+    gap: s(16);
 
     @include media($bp_pc) {
       font-size: s(24);
+    }
+
+    &::before {
+      content: '';
+      display: block;
+      width: s(30);
+      height: s(30);
+      border-radius: 50%;
+      background-color: $color_accent_primary;
+      border: s(3) solid $color_base_black;
+      flex-shrink: 0;
+    }
+
+    .services__card:nth-of-type(odd) & {
+      &::before {
+        background-color: #c2c5ff;
+      }
     }
   }
 
@@ -627,59 +560,28 @@ const latestWorks = computed(() => latestWorksResponse.value?.contents || []);
   }
 }
 
-// Projects Section
-.home__projects {
-  padding-block: s(80) s(60);
-  background-color: $color_bg_base;
-
-  @include media($bp_tab) {
-    padding-block: s(60) s(40);
-  }
-}
-
 .projects {
-  &__container {
-    @include container;
-    max-width: 1200px;
-    display: flex;
-    flex-direction: column;
-    gap: s(40);
-
-    @include media($bp_tab) {
-      gap: s(32);
-    }
-  }
-
   &__header {
     text-align: center;
-    margin-bottom: s(16);
-  }
-
-  &__title {
-    font-family: $font-f_rocknroll-one;
-    font-weight: 500;
-    font-size: s(40);
-    line-height: 1.2;
-    color: $color_text_primary;
-    margin: 0;
-
-    @include media($bp_pc) {
-      font-size: s(48);
-    }
-
-    @include media($bp_tab) {
-      font-size: s(32);
-    }
   }
 
   &__grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: s(24);
 
     @include media($bp_tab) {
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(2, 1fr);
       gap: s(16);
+    }
+
+    @include media($bp_tabL) {
+      gap: s(24);
+    }
+
+    @include media($bp_pc) {
+      grid-template-columns: repeat(3, 1fr);
+      gap: s(30);
     }
   }
 
@@ -690,7 +592,7 @@ const latestWorks = computed(() => latestWorksResponse.value?.contents || []);
     padding: s(24);
     border: s(4) solid $color_base_black;
     background-color: $color_bg_base;
-    box-shadow: s(-6) s(6) 0 0 rgba(0, 0, 0, 1);
+    box-shadow: s(-6) s(6) 0 0 $color_base_black;
     border-radius: s(4);
     text-decoration: none;
     color: inherit;
@@ -698,7 +600,7 @@ const latestWorks = computed(() => latestWorksResponse.value?.contents || []);
 
     @include hover {
       transform: translate(s(-2), s(-2));
-      box-shadow: s(-8) s(8) 0 0 rgba(0, 0, 0, 1);
+      box-shadow: s(-8) s(8) 0 0 $color_base_black;
     }
 
     @include media($bp_tab) {
@@ -708,11 +610,12 @@ const latestWorks = computed(() => latestWorksResponse.value?.contents || []);
 
   &__card-image {
     width: 100%;
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 5 / 3.5;
     border: s(3) solid $color_base_black;
     border-radius: s(4);
     overflow: hidden;
     background-color: $color_bg_base;
+    padding: s(5) s(10);
   }
 
   &__card-img {
@@ -808,21 +711,7 @@ const latestWorks = computed(() => latestWorksResponse.value?.contents || []);
 }
 
 // Contact Section
-.home__contact {
-  padding-block: s(80) s(60);
-  background-color: $color_bg_base;
-
-  @include media($bp_tab) {
-    padding-block: s(60) s(40);
-  }
-}
-
 .contact {
-  &__container {
-    @include container;
-    max-width: 1000px;
-  }
-
   &__card {
     padding: s(48) s(32);
     border: s(4) solid $color_base_black;

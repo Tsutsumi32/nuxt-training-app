@@ -1,5 +1,5 @@
 <template>
-  <div class="contact-page">
+  <!-- <div class="contact-page">
     <section class="section">
       <div class="container">
         <h1 class="section-title">Contact</h1>
@@ -31,10 +31,11 @@
         </div>
       </div>
     </section>
-  </div>
+  </div> -->
+  <BasePrepare />
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .contact-page {
   min-height: 100vh;
 }

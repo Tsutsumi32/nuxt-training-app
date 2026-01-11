@@ -193,8 +193,6 @@ useHead({
 </script>
 
 <style lang="scss" scoped>
-@use '../../assets/scss/utils/index' as *;
-
 .profile-page {
   width: 100%;
 }
@@ -422,7 +420,7 @@ useHead({
     font-size: s(14);
     line-height: 1.4;
     background-color: $color_base_black;
-    color: $color_base_white;
+    color: $color_text_primary;
     padding: s(8) s(16);
     border-radius: s(8);
     margin: 0;
@@ -676,7 +674,7 @@ useHead({
     justify-content: flex-end;
     height: 100%;
     gap: s(16);
-    color: $color_base_white;
+    color: $color_text_primary;
 
     @include media($bp_pc) {
       padding: s(48);
