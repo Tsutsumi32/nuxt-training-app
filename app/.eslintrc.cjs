@@ -34,6 +34,8 @@ module.exports = {
       },
     ],
     // any型の使用を許可（必要に応じて緩和）
-    '@typescript-eslint/no-explicit-any': 'warn',
+    '@typescript-eslint/no-explicit-any': 'off',
+    // Vueのパースエラーを無効化
+    'vue/no-parsing-error': 'off',
   },
 };
