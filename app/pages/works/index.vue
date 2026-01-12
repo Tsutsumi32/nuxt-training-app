@@ -51,7 +51,7 @@
 </template>
 
 <script setup lang="ts">
-import type { WorksCategory, WorksListResponse } from '~/types/works';
+import type { Works, WorksCategory, WorksListResponse } from '~/types/works';
 
 useHead({
   title: '実績紹介 - ポートフォリオサイト',
@@ -84,31 +84,41 @@ if (categoriesData.value) {
 }
 
 // Works一覧を取得（useFetchでサーバーサイド実行）
-// selectedCategoryが変更されたときに自動的に再取得される
 const { data: worksResponse, pending: isLoadingWorks } = await useFetch<WorksListResponse>(
-  () => '/api/works',
+  '/api/works',
   {
-    params: computed(() => ({
+    params: {
       limit: 100,
       offset: 0,
-      categoryId: selectedCategory.value === 'All' ? undefined : selectedCategory.value,
-    })),
+      // カテゴリフィルタはクライアント側で行うため、ビルド時は全データを取得
+    },
     default: () => ({ contents: [], totalCount: 0, limit: 100, offset: 0 }),
-    watch: [selectedCategory],
     onResponseError({ response }: { response: { _data: any } }) {
       console.error('Failed to load works:', response._data);
     },
   }
 );
 
-// Works一覧
-const worksList = computed(() => worksResponse.value?.contents || []);
+// Works一覧（クライアント側でカテゴリフィルタリング）
+// SSGではビルド時に全データが取得されているため、クライアント側でフィルタリング
+const worksList = computed(() => {
+  const allWorks = worksResponse.value?.contents || [];
+
+  // カテゴリが'All'の場合は全データを返す
+  if (selectedCategory.value === 'All') {
+    return allWorks;
+  }
+
+  // 選択されたカテゴリでフィルタリング
+  return allWorks.filter((work: Works) => work.category?.id === selectedCategory.value);
+});
+
 const isLoading = computed(() => isLoadingWorks.value);
 
 // カテゴリを選択
 const selectCategory = (categoryId: string) => {
   selectedCategory.value = categoryId;
-  // useFetchのwatchにより自動的に再取得される
+  // worksListのcomputedが自動的に再計算される
 };
 </script>
 
