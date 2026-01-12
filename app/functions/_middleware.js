@@ -24,7 +24,7 @@ const shouldAuth = (env) => {
   if (mode === 'all') return true;
   if (mode === 'production' && current === 'production') return true;
   if (mode === 'preview' && current === 'preview') return true;
-  if (!mode) return true; // BASIC_AUTH_ENABLEDが設定されていて、ユーザー名・パスワードもある場合は有効
+  if (!mode) return true;
   return false;
 };
 
