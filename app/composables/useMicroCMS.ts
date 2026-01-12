@@ -1,11 +1,14 @@
 /**
  * microCMSクライアントを取得するcomposable
+ * SSGではビルド時にサーバーサイドで実行されるため、
+ * runtimeConfig（publicなし）から取得可能
  */
 export const useMicroCMSClient = () => {
   const config = useRuntimeConfig();
 
-  const serviceDomain = config.public.microcms?.serviceDomain;
-  const apiKey = config.public.microcms?.apiKey;
+  // サーバーサイドのみでアクセス可能（クライアント側に公開されない）
+  const serviceDomain = config.microcmsServiceDomain;
+  const apiKey = config.microcmsApiKey;
 
   if (!serviceDomain || !apiKey) {
     throw new Error(

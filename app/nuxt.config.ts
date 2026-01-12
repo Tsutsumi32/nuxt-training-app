@@ -36,9 +36,7 @@ export default defineNuxtConfig({
   // ランタイム設定（環境変数）
   // Nuxt 4のruntimeConfigを使用
   // サーバーサイドのみ: NUXT_ プレフィックスなし（機密情報）
-  // クライアントサイドにも公開: NUXT_PUBLIC_ プレフィックス付き（公開情報）
   runtimeConfig: {
-    // サーバーサイドのみ（機密情報）
     microcmsApiKey: process.env.NUXT_MICROCMS_API_KEY || process.env.MICROCMS_API_KEY,
     microcmsServiceDomain:
       process.env.NUXT_MICROCMS_SERVICE_DOMAIN || process.env.MICROCMS_SERVICE_DOMAIN,
