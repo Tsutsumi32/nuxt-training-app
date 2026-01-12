@@ -10,10 +10,6 @@ const shouldAuth = (env) => {
   if (env.BASIC_AUTH_DISABLED && env.BASIC_AUTH_DISABLED.toString().toLowerCase() === 'true') {
     return false;
   }
-  // BASIC_AUTH_ENABLEDが空の場合はベーシック認証を行わない
-  if (!env.BASIC_AUTH_ENABLED || env.BASIC_AUTH_ENABLED.trim() === '') {
-    return false;
-  }
 
   // ユーザー名とパスワードの環境変数が設定されていない場合はベーシック認証を行わない
   if (!env.BASIC_AUTH_USER || !env.BASIC_AUTH_PASS) {
