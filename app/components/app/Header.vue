@@ -228,11 +228,7 @@ watch(
 
   &__nav-link {
     padding: s(15) s(27);
-    font-family: $font-f_notosans;
-    font-weight: 500;
-    font-size: s(18);
-    line-height: 1.555;
-    letter-spacing: 0;
+    @include font(18, 155.5, 0, 500);
     color: $color_base_white;
     text-decoration: none;
     transition: all $transition_normal;

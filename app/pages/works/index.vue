@@ -139,10 +139,7 @@ const selectCategory = (categoryId: string) => {
 
 .works-header {
   &__title {
-    font-family: $font-f_rocknroll-one;
-    font-weight: 500;
-    font-size: s(40);
-    line-height: 1.2;
+    @include font(40, 120, 0, 500, $font-f_rocknroll-one);
     color: $color_text_primary;
     margin: 0 0 s(16);
 
@@ -152,9 +149,7 @@ const selectCategory = (categoryId: string) => {
   }
 
   &__description {
-    font-family: $font-f_notosans;
-    font-size: s(16);
-    line-height: 1.6;
+    @include font(16, 160, 0);
     color: $color_text_secondary;
     margin: 0;
 
@@ -186,9 +181,7 @@ const selectCategory = (categoryId: string) => {
   }
 
   &__button {
-    font-family: $font-f_notosans;
-    font-size: s(14);
-    line-height: 1.5;
+    @include font(14, 150, 0);
     color: $color_text_primary;
     padding: s(12) s(24);
     border: s(2) solid $color_base_black;
@@ -256,9 +249,7 @@ const selectCategory = (categoryId: string) => {
     padding: s(80) s(20);
 
     p {
-      font-family: $font-f_notosans;
-      font-size: s(16);
-      line-height: 1.6;
+      @include font(16, 160, 0);
       color: $color_text_secondary;
       margin: 0;
     }

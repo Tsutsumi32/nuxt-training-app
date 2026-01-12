@@ -9,17 +9,17 @@
 
 @mixin origin-scrollbar {
   &::-webkit-scrollbar {
-    height: res(8);
+    height: s(8);
   }
 
   &::-webkit-scrollbar-track {
     background-color: colors(whitesmoke);
-    border-radius: res(4);
+    border-radius: s(4);
   }
 
   &::-webkit-scrollbar-thumb {
     background-color: colors(main);
-    border-radius: res(4);
+    border-radius: s(4);
     transition: background-color 0.3s ease;
 
     &:hover {

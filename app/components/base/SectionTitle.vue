@@ -20,10 +20,7 @@ const tag = computed(() => props.tag);
 <style lang="scss" scoped>
 .section-title {
   @include lightShadow;
-  font-family: $font-f_rocknroll-one;
-  font-weight: 500;
-  font-size: s(40);
-  line-height: 1.2;
+  @include font(40, 120, 0, 500, $font-f_rocknroll-one);
   color: $color_text_primary;
   margin: 0;
   margin-bottom: s(32);

@@ -26,7 +26,9 @@
               <img src="/images/profile/img_profile.png" alt="Profile" class="profile__image" />
             </div>
             <div class="profile__text-wrapper">
-              <BaseSectionTitle>PROFILE</BaseSectionTitle>
+              <div class="profile__title">
+                <BaseSectionTitle>PROFILE</BaseSectionTitle>
+              </div>
               <p class="profile__description">
                 ポートフォリオサイトをご覧いただきありがとうございます。<br />
                 まず初めに、私のプロフィールを紹介いたします。<br />
@@ -379,10 +381,7 @@ const latestWorks = computed(() => latestWorksResponse.value?.contents || []);
     position: relative;
     z-index: 1;
     @include lightShadow;
-    font-family: $font-f_rocknroll-one;
-    font-weight: 500;
-    font-size: s(48);
-    line-height: 1.3;
+    @include font(48, 130, 0, 500, $font-f_rocknroll-one);
     color: $color_text_primary;
     margin: 0;
     height: 100dvh;
@@ -546,7 +545,6 @@ const latestWorks = computed(() => latestWorksResponse.value?.contents || []);
   &__text-wrapper {
     display: flex;
     flex-direction: column;
-    gap: s(24);
     margin-top: s(30);
 
     @include media($bp_tab) {
@@ -560,10 +558,7 @@ const latestWorks = computed(() => latestWorksResponse.value?.contents || []);
   }
 
   &__title {
-    font-family: $font-f_rocknroll-one;
-    font-weight: 500;
-    font-size: s(40);
-    line-height: 1.3;
+    @include font(40, 130, 0, 500, $font-f_rocknroll-one);
     color: $color_text_primary;
     margin: 0;
     text-align: center;
@@ -574,9 +569,7 @@ const latestWorks = computed(() => latestWorksResponse.value?.contents || []);
   }
 
   &__description {
-    font-family: $font-f_notosans;
-    font-size: s(14);
-    line-height: 1.8;
+    @include font(14, 180, 0);
     color: $color_text_primary;
     margin: 0;
 
@@ -586,13 +579,13 @@ const latestWorks = computed(() => latestWorksResponse.value?.contents || []);
   }
 
   &__button {
-    margin-top: s(16);
+    margin-top: s(24);
     width: fit-content;
     margin-inline: auto;
 
     @include media($bp_tab) {
       margin-inline: 0;
-      margin-top: 0;
+      margin-top: s(32);
     }
   }
 }
@@ -674,10 +667,7 @@ const latestWorks = computed(() => latestWorksResponse.value?.contents || []);
   }
 
   &__card-title {
-    font-family: $font-f_rocknroll-one;
-    font-weight: 700;
-    font-size: s(20);
-    line-height: 1.4;
+    @include font(20, 140, 0, 700, $font-f_rocknroll-one);
     color: $color_text_primary;
     margin: 0;
     display: flex;
@@ -707,9 +697,7 @@ const latestWorks = computed(() => latestWorksResponse.value?.contents || []);
   }
 
   &__card-description {
-    font-family: $font-f_notosans;
-    font-size: s(14);
-    line-height: 1.6;
+    @include font(14, 160, 0);
     color: $color_text_secondary;
     margin: 0;
     flex: 1;
@@ -766,9 +754,7 @@ const latestWorks = computed(() => latestWorksResponse.value?.contents || []);
     padding: s(80) s(20);
 
     p {
-      font-family: $font-f_notosans;
-      font-size: s(16);
-      line-height: 1.6;
+      @include font(16, 160, 0);
       color: $color_text_secondary;
       margin: 0;
     }

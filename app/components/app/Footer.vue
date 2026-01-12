@@ -105,7 +105,7 @@ const currentYear = new Date().getFullYear();
     }
 
     &__text {
-      @include font('noto-sans-jp', 30, 1.2, 0, 400);
+      @include font(30, 120, 0, 400);
       color: $color_text_dark;
     }
 
@@ -121,7 +121,7 @@ const currentYear = new Date().getFullYear();
   }
 
   &__nav-title {
-    @include font('noto-sans-jp', 20, 1.4, 0, 700);
+    @include font(20, 140, 0, 700);
     color: $color_text_primary;
     margin: 0;
   }
@@ -146,7 +146,7 @@ const currentYear = new Date().getFullYear();
   }
 
   &__nav-link {
-    @include font('noto-sans-jp', 16, 1.5, 0, 500);
+    @include font(16, 150, 0, 500);
     color: $color_text_secondary;
     text-decoration: none;
     transition: color $transition_normal;
@@ -169,7 +169,7 @@ const currentYear = new Date().getFullYear();
   }
 
   &__copyright {
-    @include font('noto-sans-jp', 14, 1.428, 0, 400);
+    @include font(14, 142.8, 0, 400);
     color: $color_text_secondary;
     margin: 0;
   }

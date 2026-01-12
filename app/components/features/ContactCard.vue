@@ -57,10 +57,7 @@
   }
 
   &__title {
-    font-family: $font-f_notosans;
-    font-weight: 700;
-    font-size: s(30);
-    line-height: 1.3;
+    @include font(30, 130, 0, 700);
     color: $color_text_primary;
     margin: 0;
 
@@ -78,9 +75,7 @@
   }
 
   &__description {
-    font-family: $font-f_notosans;
-    font-size: s(15);
-    line-height: 1.6;
+    @include font(15, 160, 0);
     color: $color_text_secondary;
     margin: 0;
 

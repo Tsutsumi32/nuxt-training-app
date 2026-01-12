@@ -88,12 +88,10 @@ const buttonClasses = computed(() => {
   justify-content: center;
   border: s(6) solid $color_base_black;
   border-radius: 100vh;
-  font-weight: 700;
   text-decoration: none;
   cursor: pointer;
   transition: all $transition_normal;
-  font-family: $font-f_notosans;
-  line-height: 1.333;
+  @include font(15, 133.3, 0, 700);
   text-align: center;
   box-shadow: s(2) s(5) 0 0 $color_base_black;
   background-color: $color_bg_button;

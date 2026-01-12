@@ -278,9 +278,7 @@ useHead({
   }
 
   &__text {
-    font-family: $font-f_notosans;
-    font-size: s(14);
-    line-height: 1.8;
+    @include font(14, 180, 0);
     color: $color_text_primary;
     margin: 0;
 
@@ -291,23 +289,18 @@ useHead({
 }
 
 // Catch Section
-.profile__catch {
+.profile-catch {
   padding-block: s(80) s(60);
   background-color: $color_bg_base;
 
   @include media($bp_tab) {
     padding-block: s(60) s(40);
   }
-}
-
-.profile-catch {
   &__title {
-    font-family: $font-f_rocknroll-one;
-    font-weight: 500;
-    font-size: s(26);
-    line-height: 1.3;
+    @include font(26, 130, 0, 500, $font-f_rocknroll-one);
     color: $color_text_primary;
     margin: 0;
+    text-align: center;
 
     @include media($bp_tabL) {
       font-size: s(32);
@@ -319,12 +312,10 @@ useHead({
   }
 
   &__jp {
-    font-family: $font-f_notosans;
-    font-weight: 700;
-    font-size: s(18);
-    line-height: 1.5;
+    @include font(18, 150, 0, 700);
     color: $color_text_primary;
     margin: s(24) 0 0;
+    text-align: center;
 
     @include media($bp_pc) {
       font-size: s(24);
@@ -337,11 +328,10 @@ useHead({
     display: flex;
     flex-direction: column;
     gap: s(16);
+    text-align: center;
 
     p {
-      font-family: $font-f_notosans;
-      font-size: s(14);
-      line-height: 1.8;
+      @include font(14, 180, 0);
       color: $color_text_secondary;
       margin: 0;
 
@@ -400,9 +390,7 @@ useHead({
   }
 
   &__en {
-    font-family: $font-f_rocknroll-one;
-    font-size: s(14);
-    line-height: 1.4;
+    @include font(14, 140, 0, 400, $font-f_rocknroll-one);
     background-color: $color_base_black;
     color: $color_accent_primary;
     padding: s(8) s(16);
@@ -444,10 +432,7 @@ useHead({
   }
 
   &__title {
-    font-family: $font-f_notosans;
-    font-weight: 700;
-    font-size: s(24);
-    line-height: 1.4;
+    @include font(24, 140, 0, 700);
     color: $color_text_primary;
     margin: s(16) 0 0;
     padding-bottom: s(16);
@@ -460,9 +445,7 @@ useHead({
   }
 
   &__text {
-    font-family: $font-f_notosans;
-    font-size: s(14);
-    line-height: 1.8;
+    @include font(14, 180, 0);
     color: $color_text_secondary;
     margin: s(16) 0 0;
     flex: 1;
@@ -516,10 +499,7 @@ useHead({
   }
 
   &__category-title {
-    font-family: $font-f_rocknroll-one;
-    font-weight: 700;
-    font-size: s(20);
-    line-height: 1.4;
+    @include font(20, 140, 0, 700);
     color: $color_text_primary;
     margin: 0 0 s(20);
     padding-bottom: s(12);
@@ -542,9 +522,7 @@ useHead({
   }
 
   &__item {
-    font-family: $font-f_notosans;
-    font-size: s(14);
-    line-height: 1.5;
+    @include font(14, 150, 0);
     color: $color_text_primary;
     padding: s(12) s(16);
     border: s(2) solid $color_base_black;
@@ -655,10 +633,7 @@ useHead({
   }
 
   &__title {
-    font-family: $font-f_rocknroll-one;
-    font-weight: 700;
-    font-size: s(32);
-    line-height: 1.2;
+    @include font(32, 120, 0, 700, $font-f_rocknroll-one);
     margin: 0;
 
     @include media($bp_pc) {
@@ -667,9 +642,7 @@ useHead({
   }
 
   &__text {
-    font-family: $font-f_notosans;
-    font-size: s(14);
-    line-height: 1.6;
+    @include font(14, 160, 0);
     margin: 0;
 
     @include media($bp_pc) {

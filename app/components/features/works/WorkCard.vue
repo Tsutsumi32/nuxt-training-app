@@ -112,10 +112,7 @@ defineProps<{
   }
 
   &__title {
-    font-family: $font-f_rocknroll-one;
-    font-weight: 700;
-    font-size: s(20);
-    line-height: 1.4;
+    @include font(20, 140, 0, 700, $font-f_rocknroll-one);
     color: $color_text_primary;
     margin: 0;
 
@@ -125,9 +122,7 @@ defineProps<{
   }
 
   &__category {
-    font-family: $font-f_notosans;
-    font-size: s(12);
-    line-height: 1.5;
+    @include font(12, 150, 0);
     color: $color_text_secondary;
     margin: 0;
 
@@ -137,9 +132,7 @@ defineProps<{
   }
 
   &__description {
-    font-family: $font-f_notosans;
-    font-size: s(12);
-    line-height: 1.5;
+    @include font(12, 150, 0);
     color: $color_text_primary;
     margin: 0;
     border: s(2) solid $color_base_black;

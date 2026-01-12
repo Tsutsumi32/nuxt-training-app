@@ -350,10 +350,7 @@ useHead(() => {
   }
 
   &__title {
-    font-family: $font-f_rocknroll-one;
-    font-weight: 500;
-    font-size: s(28);
-    line-height: 1.4;
+    @include font(28, 140, 0, 500, $font-f_rocknroll-one);
     color: $color_text_primary;
     margin: 0;
 
@@ -381,9 +378,7 @@ useHead(() => {
   }
 
   &__category {
-    font-family: $font-f_notosans;
-    font-size: s(14);
-    line-height: 1.5;
+    @include font(14, 150, 0, 500);
     color: $color_text_primary;
     background-color: $color_base_white;
     padding: s(8) s(16);
@@ -391,7 +386,6 @@ useHead(() => {
     border: s(2) solid $color_base_black;
     width: fit-content;
     margin: 0;
-    font-weight: 500;
 
     @include media($bp_pc) {
       font-size: s(16);
@@ -424,10 +418,7 @@ useHead(() => {
   }
 
   &__data-label {
-    font-family: $font-f_notosans;
-    font-weight: 700;
-    font-size: s(14);
-    line-height: 1.5;
+    @include font(14, 150, 0, 700);
     color: $color_text_primary;
     min-width: s(100);
 
@@ -438,9 +429,7 @@ useHead(() => {
   }
 
   &__data-value {
-    font-family: $font-f_notosans;
-    font-size: s(14);
-    line-height: 1.5;
+    @include font(14, 150, 0);
     color: $color_text_primary;
 
     @include media($bp_pc) {
@@ -449,9 +438,7 @@ useHead(() => {
   }
 
   &__data-link {
-    font-family: $font-f_notosans;
-    font-size: s(14);
-    line-height: 1.5;
+    @include font(14, 150, 0);
     color: $color_text_link;
     text-decoration: underline;
     transition: color $transition_normal;
@@ -482,10 +469,7 @@ useHead(() => {
   }
 
   &__section-title {
-    font-family: $font-f_notosans;
-    font-weight: 700;
-    font-size: s(28);
-    line-height: 1.4;
+    @include font(28, 140, 0, 700);
     color: $color_text_primary;
     margin: 0 0 s(24);
 
@@ -495,9 +479,7 @@ useHead(() => {
   }
 
   &__text {
-    font-family: $font-f_notosans;
-    font-size: s(15);
-    line-height: 1.8;
+    @include font(15, 180, 0);
     color: $color_text_primary;
     margin: 0;
     white-space: pre-wrap;
@@ -518,10 +500,7 @@ useHead(() => {
   }
 
   &__label {
-    font-family: $font-f_notosans;
-    font-weight: 700;
-    font-size: s(14);
-    line-height: 1.5;
+    @include font(14, 150, 0, 700);
     color: $color_text_primary;
     background-color: $color_base_white;
     padding: s(8) s(16);
@@ -537,9 +516,7 @@ useHead(() => {
   }
 
   &__explain {
-    font-family: $font-f_notosans;
-    font-size: s(14);
-    line-height: 1.8;
+    @include font(14, 180, 0);
     color: $color_text_secondary;
     white-space: pre-wrap;
 
@@ -561,10 +538,7 @@ useHead(() => {
 
 .works-detail-materials {
   &__title {
-    font-family: $font-f_rocknroll-one;
-    font-weight: 500;
-    font-size: s(28);
-    line-height: 1.4;
+    @include font(28, 140, 0, 500, $font-f_rocknroll-one);
     color: $color_text_primary;
     margin: 0 0 s(32);
     text-align: center;
@@ -614,10 +588,7 @@ useHead(() => {
 
 .works-detail-productions {
   &__title {
-    font-family: $font-f_notosans;
-    font-weight: 700;
-    font-size: s(28);
-    line-height: 1.4;
+    @include font(28, 140, 0, 700);
     color: $color_text_primary;
     margin: 0 0 s(32);
     text-align: center;
@@ -667,10 +638,7 @@ useHead(() => {
 
 .works-detail-related {
   &__title {
-    font-family: $font-f_notosans;
-    font-weight: 700;
-    font-size: s(28);
-    line-height: 1.4;
+    @include font(28, 140, 0, 700);
     color: $color_text_primary;
     margin: 0 0 s(32);
     text-align: center;
@@ -738,10 +706,7 @@ useHead(() => {
   }
 
   h1 {
-    font-family: $font-f_rocknroll-one;
-    font-weight: 500;
-    font-size: s(32);
-    line-height: 1.4;
+    @include font(32, 140, 0, 500, $font-f_rocknroll-one);
     color: $color_text_primary;
     margin: 0;
 
