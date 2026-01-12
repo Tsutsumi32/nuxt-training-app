@@ -3,44 +3,23 @@
     <div class="footer__container">
       <div class="footer__main">
         <div class="footer__brand">
-          <div class="footer__brand__logo">
-            <span class="footer__brand__text">Figma</span>
-            <svg
-              class="footer__brand__icon"
-              width="48"
-              height="48"
-              viewBox="0 0 48 48"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M20.5 10V38C20.5 39.933 18.933 41.5 17 41.5C15.067 41.5 13.5 39.933 13.5 38V10C13.5 8.067 15.067 6.5 17 6.5C18.933 6.5 20.5 8.067 20.5 10Z"
-                :fill="colorVar('base', 'black')"
-              />
-              <path
-                d="M34.5 17.5V38C34.5 39.933 32.933 41.5 31 41.5C29.067 41.5 27.5 39.933 27.5 38V17.5C27.5 15.567 29.067 14 31 14C32.933 14 34.5 15.567 34.5 17.5Z"
-                :fill="colorVar('base', 'black')"
-              />
-            </svg>
-          </div>
+          <NuxtLink to="/" class="footer__brand__logo">
+            <img :src="logoPath" alt="Hero image" class="hero__image" />
+          </NuxtLink>
         </div>
         <div class="footer__nav-section">
-          <h3 class="footer__nav-title">Figma</h3>
           <ul class="footer__nav-list">
             <li class="footer__nav-item">
-              <NuxtLink to="/" class="footer__nav-link">Figma</NuxtLink>
+              <NuxtLink to="/profile" class="footer__nav-link">Profile</NuxtLink>
             </li>
             <li class="footer__nav-item">
-              <a href="#" class="footer__nav-link">Framer</a>
+              <NuxtLink to="/works" class="footer__nav-link">Works</NuxtLink>
             </li>
             <li class="footer__nav-item">
-              <a href="#" class="footer__nav-link">Webflow</a>
+              <NuxtLink to="/tools" class="footer__nav-link">Tools</NuxtLink>
             </li>
             <li class="footer__nav-item">
-              <a href="#" class="footer__nav-link">Notion</a>
-            </li>
-            <li class="footer__nav-item">
-              <a href="#" class="footer__nav-link">Lottie</a>
+              <NuxtLink to="/contact" class="footer__nav-link">Contact</NuxtLink>
             </li>
           </ul>
         </div>
@@ -53,11 +32,14 @@
 </template>
 
 <script setup lang="ts">
-const currentYear = new Date().getFullYear();
+const { isDark } = useTheme();
 
-const colorVar = (group: string, name: string) => {
-  return `var(--color-${group}-${name})`;
-};
+// テーマに応じてロゴのパスを切り替え
+const logoPath = computed(() => {
+  return isDark.value ? '/images/logo.png' : '/images/logo_black.png';
+});
+
+const currentYear = new Date().getFullYear();
 </script>
 
 <style lang="scss" scoped>
@@ -65,14 +47,23 @@ const colorVar = (group: string, name: string) => {
   border-top: s(4) solid $color_base_black;
   background-color: $color_bg_base;
   margin-top: auto;
+  margin-top: s(100);
+
+  @include media($bp_tab) {
+    margin-top: s(120);
+  }
+
+  @include media($bp_pc) {
+    margin-top: s(150);
+  }
 
   &__container {
     @include container;
     padding-block: s(52) 0;
-    padding-inline: s(84.5);
+    padding-left: s(40);
     display: flex;
     flex-direction: column;
-    gap: s(48);
+    gap: s(32);
 
     @include media($bp_tab) {
       padding-block: s(40) 0;
@@ -85,7 +76,6 @@ const colorVar = (group: string, name: string) => {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: s(48);
-    padding-inline: s(24);
 
     @include media($bp_tab) {
       grid-template-columns: 1fr;
@@ -103,6 +93,15 @@ const colorVar = (group: string, name: string) => {
       display: flex;
       align-items: center;
       gap: s(12);
+      width: s(140);
+
+      @include media($bp_tab) {
+        margin-inline: auto;
+      }
+
+      @include media($bp_pc) {
+        width: s(180);
+      }
     }
 
     &__text {
@@ -134,6 +133,12 @@ const colorVar = (group: string, name: string) => {
     display: flex;
     flex-direction: column;
     gap: s(8);
+
+    @include media($bp_tab) {
+      flex-direction: row;
+      justify-content: center;
+      gap: 0;
+    }
   }
 
   &__nav-item {
@@ -147,8 +152,13 @@ const colorVar = (group: string, name: string) => {
     transition: color $transition_normal;
     display: inline-block;
 
+    @include media($bp_tab) {
+      padding-block: s(4);
+      padding-inline: s(16);
+    }
+
     @include hover {
-      color: $color_text_primary;
+      color: $color_accent_primary;
     }
   }
 

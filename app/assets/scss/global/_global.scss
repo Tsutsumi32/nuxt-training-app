@@ -11,7 +11,7 @@ html {
   // (・GSAPなどのアニメーションと相性が悪い・画面遷移時はスムーススクロールしたくない)
   // 画面遷移を伴う場合の位置調整はscroll-padding-topで調整
   scroll-padding-top: calc(s($height_header_sp) + 5.2rem);
-  scroll-behavior: smooth;
+  // scroll-behavior: smooth;
 }
 
 body {

@@ -2,7 +2,7 @@
   <header class="header">
     <div class="header__container">
       <NuxtLink to="/" class="header__brand" @click="closeMenu">
-        <img src="/images/logo.png" alt="Hero image" class="hero__image" />
+        <img :src="logoPath" alt="Hero image" class="hero__image" />
       </NuxtLink>
       <div class="header__contents">
         <nav ref="navElement" class="header__nav" :class="{ 'is-open': isMenuOpen }">
@@ -12,7 +12,7 @@
             :class="{ 'is-active': isActive('/profile') }"
             @click="closeMenu"
           >
-            About
+            Profile
           </NuxtLink>
           <NuxtLink
             to="/works"
@@ -56,7 +56,6 @@
         </button>
       </div>
     </div>
-    <div v-show="isMenuOpen" ref="overlayElement" class="header__overlay" @click="closeMenu"></div>
   </header>
 </template>
 
@@ -66,9 +65,13 @@ import { fadeIn, fadeOut } from '~/utils/fadeAnimation';
 const route = useRoute();
 const { isDark, toggleTheme } = useTheme();
 
+// テーマに応じてロゴのパスを切り替え
+const logoPath = computed(() => {
+  return isDark.value ? '/images/logo.png' : '/images/logo_black.png';
+});
+
 const isMenuOpen = ref(false);
 const navElement = ref<HTMLElement | null>(null);
-const overlayElement = ref<HTMLElement | null>(null);
 
 const isActive = (path: string) => {
   return route.path.startsWith(path);
@@ -82,10 +85,6 @@ const closeMenu = () => {
   isMenuOpen.value = false;
 };
 
-const colorVar = (group: string, name: string) => {
-  return `var(--color-${group}-${name})`;
-};
-
 // メニューの表示・非表示をfadeAnimationで制御
 watch(
   () => isMenuOpen.value,
@@ -93,7 +92,6 @@ watch(
     if (typeof window === 'undefined') return;
 
     const navEl = navElement.value;
-    const overlayEl = overlayElement.value;
 
     if (newValue) {
       // メニューを開く
@@ -101,17 +99,10 @@ watch(
         navEl.style.opacity = '0';
         fadeIn(navEl, 300, false);
       }
-      if (overlayEl) {
-        overlayEl.style.opacity = '0';
-        fadeIn(overlayEl, 300, false);
-      }
     } else {
       // メニューを閉じる
       if (navEl) {
         fadeOut(navEl, 300, false);
-      }
-      if (overlayEl) {
-        fadeOut(overlayEl, 300, false);
       }
     }
   },
@@ -129,7 +120,7 @@ watch(
 
 <style lang="scss" scoped>
 .header {
-  border: s(2) solid $color_base_accent;
+  border: s(2) solid $color_base_black;
   background-color: $color_bg_base;
   position: fixed;
   top: s(16);
@@ -143,6 +134,10 @@ watch(
   @include media($bp_pc) {
     height: s($height_header_pc);
     width: calc(100% - s(20));
+  }
+
+  @include mode($theme_dark) {
+    border: s(2) solid $color_base_accent;
   }
 
   &__container {
@@ -199,7 +194,7 @@ watch(
     position: absolute;
     top: calc(100% + s(8));
     left: 0;
-    background-color: $color_bg_base;
+    background-color: $color_base_black;
     border-radius: s(16);
     box-shadow: s(0) s(8) s(24) rgba(0, 0, 0, 0.1);
     padding: s(16);
@@ -238,9 +233,8 @@ watch(
     font-size: s(18);
     line-height: 1.555;
     letter-spacing: 0;
-    color: $color_text_primary;
+    color: $color_base_white;
     text-decoration: none;
-    background-color: $color_bg_base;
     transition: all $transition_normal;
     display: inline-block;
     width: 100%;
@@ -258,6 +252,7 @@ watch(
     }
 
     @include media($bp_pc) {
+      color: $color_text_primary;
       width: auto;
       text-align: left;
       padding: s(10) s(18);
@@ -348,22 +343,6 @@ watch(
 
     @include mode($theme_dark) {
       background-color: $color_base_white;
-    }
-  }
-
-  &__overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 100;
-    backdrop-filter: blur(s(2));
-    opacity: 0;
-
-    @include media($bp_pc) {
-      display: none;
     }
   }
 }

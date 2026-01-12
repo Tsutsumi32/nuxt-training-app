@@ -96,7 +96,7 @@ const buttonClasses = computed(() => {
   line-height: 1.333;
   text-align: center;
   box-shadow: s(2) s(5) 0 0 $color_base_black;
-  background-color: $color_button_bg;
+  background-color: $color_bg_button;
   color: $color_text_primary;
 
   &:disabled,
@@ -120,7 +120,7 @@ const buttonClasses = computed(() => {
   }
 
   &#{$_parent}--secondary {
-    background-color: $color_button_bg;
+    background-color: $color_bg_button;
     color: $color_text_primary;
     border-color: $color_base_black;
 
@@ -135,7 +135,7 @@ const buttonClasses = computed(() => {
     border-color: $color_base_black;
 
     @include hover {
-      background-color: $color_button_bg;
+      background-color: $color_bg_button;
     }
   }
 
@@ -157,12 +157,12 @@ const buttonClasses = computed(() => {
 
   &#{$_parent}--medium {
     padding: s(16) s(32);
-    font-size: s(16);
+    font-size: s(15);
   }
 
   &#{$_parent}--large {
     padding: s(18) s(45);
-    font-size: s(20);
+    font-size: s(18);
 
     @include media($bp_tab) {
       padding: s(20) s(40);

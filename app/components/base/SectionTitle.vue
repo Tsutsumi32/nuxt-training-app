@@ -19,6 +19,7 @@ const tag = computed(() => props.tag);
 
 <style lang="scss" scoped>
 .section-title {
+  @include lightShadow;
   font-family: $font-f_rocknroll-one;
   font-weight: 500;
   font-size: s(40);
@@ -28,7 +29,7 @@ const tag = computed(() => props.tag);
   margin-bottom: s(32);
 
   @include media($bp_tab) {
-    font-size: s(32);
+    font-size: s(38);
     margin-bottom: s(52);
   }
 

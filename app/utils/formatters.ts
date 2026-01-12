@@ -29,3 +29,14 @@ export const truncate = (text: string, length: number): string => {
   if (text.length <= length) return text;
   return text.slice(0, length) + '...';
 };
+
+/**
+ * client フィールドのフォーマット処理（配列の場合は結合して表示）
+ */
+export const formatClient = (client: string | string[] | undefined): string => {
+  if (!client) return '';
+  if (Array.isArray(client)) {
+    return client.join(', ');
+  }
+  return client;
+};

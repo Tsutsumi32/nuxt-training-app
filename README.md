@@ -166,7 +166,7 @@ nuxt-training-app/
     │   └── default.vue    # デフォルトレイアウト（Header + Footer）
     ├── pages/             # ページコンポーネント（自動ルーティング）
     │   ├── index.vue      # トップページ（/）
-    │   ├── about.vue      # Aboutページ（/about）
+    │   ├── about.vue      # Profileページ（/about）
     │   ├── works.vue      # Worksページ（/works）
     │   └── contact.vue    # Contactページ（/contact）
     ├── public/            # 公開される静的ファイル
@@ -228,7 +228,7 @@ make generate
 ページコンポーネントを配置します（ファイルベースルーティング）。
 
 - **index.vue**: トップページ（`/`）
-- **about.vue**: Aboutページ（`/about`）
+- **about.vue**: Profileページ（`/about`）
 - **works.vue**: Worksページ（`/works`）
 - **contact.vue**: Contactページ（`/contact`）
 

@@ -36,11 +36,11 @@ export const disableScroll = (pl = true, signal) => {
 /**
  * スクロールを有効化し、レイアウトを元に戻す
  * @param {boolean} [pl=true] - パディング調整を行うかどうか
- * @param {AbortSignal} [signal] - AbortSignal（クリーンアップ用、この関数では使用しないが互換性のため）
+ * @param {AbortSignal} [_signal] - AbortSignal（クリーンアップ用、この関数では使用しないが互換性のため）
  * @description bodyのoverflowをvisibleに設定してスクロールを有効化し、
  * 追加されていたパディングを削除してレイアウトを元に戻す。
  */
-export const enableScroll = (pl = true, signal) => {
+export const enableScroll = (pl = true, _signal) => {
   pl && (document.body.style.paddingRight = `0`);
   document.body.style.overflow = 'visible';
 };

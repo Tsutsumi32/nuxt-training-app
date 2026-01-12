@@ -2,6 +2,15 @@
   <div class="home">
     <!-- Hero Section -->
     <div class="hero">
+      <div class="hero__decoration hero__decoration--1"></div>
+      <div class="hero__decoration hero__decoration--2"></div>
+      <div class="hero__decoration hero__decoration--3"></div>
+      <div class="hero__decoration hero__decoration--4"></div>
+      <div class="hero__decoration hero__decoration--5"></div>
+      <div class="hero__decoration hero__decoration--6"></div>
+      <div class="hero__decoration hero__decoration--7"></div>
+      <div class="hero__decoration hero__decoration--8"></div>
+      <div class="hero__decoration hero__decoration--9"></div>
       <h1 class="hero__heading">
         <span class="hero__heading__line">WEB UI <br class="hp_hidden_tab_" />DEVELOPER</span>
         <span>TRAINING <br class="hp_hidden_tab_" />APP</span>
@@ -17,7 +26,7 @@
               <img src="/images/profile/img_profile.png" alt="Profile" class="profile__image" />
             </div>
             <div class="profile__text-wrapper">
-              <h2 class="profile__title">Profile</h2>
+              <BaseSectionTitle>PROFILE</BaseSectionTitle>
               <p class="profile__description">
                 ポートフォリオサイトをご覧いただきありがとうございます。<br />
                 まず初めに、私のプロフィールを紹介いたします。<br />
@@ -33,7 +42,7 @@
     </section>
 
     <!-- Services Section -->
-    <BaseSection padding="top">
+    <AppSection padding="top">
       <div class="services">
         <BaseContainer>
           <div class="services__header">
@@ -45,96 +54,54 @@
               <p class="services__card-description">
                 WEBサイト制作を行います。デザイン制作から実装まで一貫して対応いたします。
               </p>
-              <BaseButton href="#" variant="outline" size="small" class="services__card-button">
-                詳しく見る
-              </BaseButton>
+              <div class="services__card-button">
+                <BaseButton href="#" variant="outline" size="small"> 詳しく見る </BaseButton>
+              </div>
             </li>
             <li class="services__card">
               <h3 class="services__card-title">LP・広告バナー</h3>
               <p class="services__card-description">
                 ランディングページやバナーなど、販促用のクリエイティブ制作を行います。
               </p>
-              <BaseButton href="#" variant="outline" size="small" class="services__card-button">
-                詳しく見る
-              </BaseButton>
+              <div class="services__card-button">
+                <BaseButton href="#" variant="outline" size="small"> 詳しく見る </BaseButton>
+              </div>
             </li>
             <li class="services__card">
               <h3 class="services__card-title">WEB制作協力</h3>
               <p class="services__card-description">
                 制作会社様や同業個人様の、WEBサイト制作のお手伝いをいたします。
               </p>
-              <BaseButton href="#" variant="outline" size="small" class="services__card-button">
-                詳しく見る
-              </BaseButton>
+              <div class="services__card-button">
+                <BaseButton href="#" variant="outline" size="small"> 詳しく見る </BaseButton>
+              </div>
             </li>
             <li class="services__card">
               <h3 class="services__card-title">フロントエンド開発</h3>
               <p class="services__card-description">
                 モダンな技術スタックを使用した、レスポンシブで高速なWebアプリケーションを開発します。
               </p>
-              <BaseButton href="#" variant="outline" size="small" class="services__card-button">
-                詳しく見る
-              </BaseButton>
+              <div class="services__card-button">
+                <BaseButton href="#" variant="outline" size="small"> 詳しく見る </BaseButton>
+              </div>
             </li>
           </ul>
         </BaseContainer>
       </div>
-    </BaseSection>
+    </AppSection>
 
     <!-- Projects Section -->
-    <BaseSection padding="top">
+    <AppSection padding="top">
       <div class="projects">
         <BaseContainer>
           <div class="projects__header">
             <BaseSectionTitle>WORKS</BaseSectionTitle>
           </div>
-          <div v-if="latestWorks.length > 0" class="projects__grid">
-            <NuxtLink
-              v-for="work in latestWorks"
-              :key="work.id"
-              :to="`/works/${work.id}`"
-              class="projects__card"
-            >
-              <div class="projects__card-image">
-                <img
-                  :src="work.thumbnail.url"
-                  :alt="work.title"
-                  class="projects__card-img"
-                  :width="work.thumbnail.width"
-                  :height="work.thumbnail.height"
-                />
-              </div>
-              <div class="projects__card-content">
-                <div class="projects__card-text">
-                  <h3 class="projects__card-title">
-                    <template v-for="(line, index) in work.title.split(/<br\s*\/?>/i)" :key="index">
-                      <template v-if="Number(index) > 0"><br /></template>
-                      {{ line }}
-                    </template>
-                  </h3>
-                  <p class="projects__card-category">{{ work.category.name }}</p>
-                  <p class="projects__card-description">{{ work.client }}</p>
-                </div>
-                <div class="projects__card-arrow">
-                  <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 20 20"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M7.5 5L12.5 10L7.5 15"
-                      stroke="currentColor"
-                      stroke-width="1.67"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                </div>
-              </div>
-            </NuxtLink>
-          </div>
+          <ul v-if="latestWorks.length > 0" class="projects__grid">
+            <li v-for="work in latestWorks" :key="work.id">
+              <FeaturesWorksWorkCard :work="work" />
+            </li>
+          </ul>
           <div v-else-if="isLoadingWorks" class="projects__loading">
             <p>実績データを読み込み中...</p>
           </div>
@@ -146,31 +113,20 @@
           </div>
         </BaseContainer>
       </div>
-    </BaseSection>
+    </AppSection>
 
     <!-- Contact Section -->
-    <BaseSection padding="top">
-      <div class="contact">
-        <BaseContainer>
-          <div class="contact__card">
-            <h2 class="contact__title">プロジェクトを始めましょう</h2>
-            <p class="contact__description">
-              何かお手伝いできることがあれば、お気軽にお問い合わせください。一緒に素晴らしいものを作りましょう。
-            </p>
-            <div class="contact__actions">
-              <BaseButton to="/contact" variant="primary" size="large" class="contact__button">
-                メッセージを送る
-              </BaseButton>
-            </div>
-          </div>
-        </BaseContainer>
-      </div>
-    </BaseSection>
+    <FeaturesContactCard />
   </div>
 </template>
 
 <script setup lang="ts">
 import type { Works } from '~/types/works';
+
+// レイアウトに pt を渡す
+definePageMeta({
+  pt: false,
+});
 
 useHead({
   title: 'ポートフォリオサイト - トップページ',
@@ -204,6 +160,179 @@ const latestWorks = computed(() => latestWorksResponse.value?.contents || []);
 
 // Hero Section
 .hero {
+  position: relative;
+  overflow: hidden;
+
+  &__decoration {
+    position: absolute;
+    border-radius: 50%;
+    background-color: $color_accent_primary;
+    border: s(3) solid $color_base_black;
+    z-index: 0;
+    pointer-events: none;
+    animation: float 6s ease-in-out infinite;
+
+    &--1 {
+      width: s(40);
+      height: s(40);
+      top: 17%;
+      left: 10%;
+      animation-delay: 0s;
+      background-color: $color_accent_primary;
+
+      @include media($bp_tab) {
+        width: s(60);
+        height: s(60);
+        top: 20%;
+        left: 10%;
+      }
+    }
+
+    &--2 {
+      width: s(20);
+      height: s(20);
+      top: 30%;
+      right: 25%;
+      animation-delay: 1s;
+      background-color: #c2c5ff;
+
+      @include media($bp_tab) {
+        width: s(28);
+        height: s(28);
+        top: 30%;
+        right: 30%;
+      }
+    }
+
+    &--3 {
+      width: s(50);
+      height: s(50);
+      top: 87%;
+      left: 8%;
+      animation-delay: 2s;
+      background-color: $color_accent_primary;
+
+      @include media($bp_tab) {
+        width: s(50);
+        height: s(50);
+        top: 80%;
+        left: 8%;
+      }
+    }
+
+    &--4 {
+      width: s(30);
+      height: s(30);
+      top: 22%;
+      right: 8%;
+      animation-delay: 0.5s;
+      background-color: #c2c5ff;
+
+      @include media($bp_tab) {
+        width: s(55);
+        height: s(55);
+        top: 22%;
+        right: 8%;
+      }
+    }
+
+    &--5 {
+      width: s(22);
+      height: s(22);
+      bottom: 20%;
+      left: 40%;
+      animation-delay: 1.5s;
+      background-color: $color_accent_primary;
+
+      @include media($bp_tab) {
+        width: s(25);
+        height: s(25);
+        bottom: 20%;
+        left: 34%;
+      }
+    }
+
+    &--6 {
+      width: s(60);
+      height: s(60);
+      bottom: 15%;
+      right: 10%;
+      animation-delay: 2.5s;
+      background-color: #c2c5ff;
+
+      @include media($bp_tab) {
+        width: s(80);
+        height: s(80);
+        bottom: 15%;
+        right: 10%;
+      }
+    }
+
+    &--7 {
+      display: none;
+      width: s(22);
+      height: s(22);
+      bottom: 20%;
+      left: 40%;
+      animation-delay: 1.5s;
+      background-color: #c2c5ff;
+
+      @include media($bp_tab) {
+        display: block;
+        width: s(25);
+        height: s(25);
+        bottom: 40%;
+        left: 5%;
+      }
+    }
+
+    &--8 {
+      display: none;
+      width: s(22);
+      height: s(22);
+      bottom: 20%;
+      left: 40%;
+      animation-delay: 1.5s;
+      background-color: #c2c5ff;
+
+      @include media($bp_tab) {
+        display: block;
+        width: s(30);
+        height: s(30);
+        bottom: 8%;
+        left: 60%;
+      }
+    }
+
+    &--9 {
+      display: none;
+      width: s(22);
+      height: s(22);
+      bottom: 20%;
+      left: 40%;
+      animation-delay: 1.5s;
+      background-color: $color_accent_primary;
+
+      @include media($bp_tab) {
+        display: block;
+        width: s(25);
+        height: s(25);
+        top: 18%;
+        left: 38%;
+      }
+    }
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
   &__content {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -247,6 +376,8 @@ const latestWorks = computed(() => latestWorksResponse.value?.contents || []);
   }
 
   &__heading {
+    position: relative;
+    z-index: 1;
     @include lightShadow;
     font-family: $font-f_rocknroll-one;
     font-weight: 500;
@@ -260,7 +391,7 @@ const latestWorks = computed(() => latestWorksResponse.value?.contents || []);
     display: flex;
     justify-content: center;
     flex-direction: column;
-    padding-bottom: s($height_header_sp - 30);
+    perspective: 1000px;
 
     @include media($bp_tab) {
       align-items: center;
@@ -272,7 +403,18 @@ const latestWorks = computed(() => latestWorksResponse.value?.contents || []);
 
     @include media($bp_pc) {
       font-size: s(80);
-      padding-bottom: s($height_header_pc - 40);
+    }
+
+    & > span {
+      display: block;
+      animation: slideInLeft 1.5s 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+      opacity: 0;
+      transform: translateX(-100%) scaleX(0.5) rotateY(-45deg);
+      transform-origin: left center;
+
+      &:nth-child(2) {
+        animation-delay: 0.9s;
+      }
     }
 
     &__line {
@@ -295,6 +437,29 @@ const latestWorks = computed(() => latestWorksResponse.value?.contents || []);
           opacity: 0.8;
         }
       }
+    }
+  }
+
+  @keyframes slideInLeft {
+    0% {
+      opacity: 0;
+      transform: translateX(-100%) scaleX(0.5) rotateY(-45deg);
+    }
+    50% {
+      opacity: 0.8;
+      transform: translateX(8%) scaleX(1.02) rotateY(8deg);
+    }
+    70% {
+      opacity: 0.95;
+      transform: translateX(-1%) scaleX(1) rotateY(0deg);
+    }
+    85% {
+      opacity: 0.98;
+      transform: translateX(0.5%) scaleX(1.01) rotateY(0.5deg);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0) scaleX(1) rotateY(0deg);
     }
   }
 
@@ -585,114 +750,14 @@ const latestWorks = computed(() => latestWorksResponse.value?.contents || []);
     }
   }
 
-  &__card {
-    display: flex;
-    flex-direction: column;
-    gap: s(16);
-    padding: s(24);
-    border: s(4) solid $color_base_black;
-    background-color: $color_bg_base;
-    box-shadow: s(-6) s(6) 0 0 $color_base_black;
-    border-radius: s(4);
-    text-decoration: none;
-    color: inherit;
-    transition: all $transition_normal;
-
-    @include hover {
-      transform: translate(s(-2), s(-2));
-      box-shadow: s(-8) s(8) 0 0 $color_base_black;
-    }
-
-    @include media($bp_tab) {
-      padding: s(20);
-    }
-  }
-
-  &__card-image {
-    width: 100%;
-    aspect-ratio: 5 / 3.5;
-    border: s(3) solid $color_base_black;
-    border-radius: s(4);
-    overflow: hidden;
-    background-color: $color_bg_base;
-    padding: s(5) s(10);
-  }
-
-  &__card-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  &__card-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: s(16);
-  }
-
-  &__card-text {
-    display: flex;
-    flex-direction: column;
-    gap: s(4);
-    flex: 1;
-  }
-
-  &__card-title {
-    font-family: $font-f_rocknroll-one;
-    font-weight: 700;
-    font-size: s(20);
-    line-height: 1.4;
-    color: $color_text_primary;
-    margin: 0;
-
-    @include media($bp_pc) {
-      font-size: s(24);
-    }
-  }
-
-  &__card-category {
-    font-family: $font-f_notosans;
-    font-size: s(12);
-    line-height: 1.5;
-    color: $color_text_secondary;
-    margin: 0;
-
-    @include media($bp_pc) {
-      font-size: s(14);
-    }
-  }
-
-  &__card-description {
-    font-family: $font-f_notosans;
-    font-size: s(14);
-    line-height: 1.5;
-    color: $color_text_primary;
-    margin: 0;
-
-    @include media($bp_pc) {
-      font-size: s(16);
-    }
-  }
-
-  &__card-arrow {
-    width: s(32);
-    height: s(32);
-    flex-shrink: 0;
-    color: $color_text_primary;
-    border: s(2) solid $color_accent_primary;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: $color_bg_base;
-  }
-
   &__more {
     display: flex;
     justify-content: center;
-    margin-top: s(16);
+    margin-top: s(32);
+
+    @include media($bp_pc) {
+      margin-top: s(48);
+    }
   }
 
   &__loading,
@@ -706,77 +771,6 @@ const latestWorks = computed(() => latestWorksResponse.value?.contents || []);
       line-height: 1.6;
       color: $color_text_secondary;
       margin: 0;
-    }
-  }
-}
-
-// Contact Section
-.contact {
-  &__card {
-    padding: s(48) s(32);
-    border: s(4) solid $color_base_black;
-    background-color: $color_bg_base;
-    box-shadow: s(-8) s(8) 0 0 rgba(0, 0, 0, 1);
-    border-radius: s(4);
-    display: flex;
-    flex-direction: column;
-    gap: s(24);
-    text-align: center;
-
-    @include media($bp_pc) {
-      padding: s(56) s(48);
-    }
-
-    @include media($bp_tab) {
-      padding: s(32) s(24);
-      gap: s(20);
-    }
-  }
-
-  &__title {
-    font-family: $font-f_rocknroll-one;
-    font-weight: 500;
-    font-size: s(32);
-    line-height: 1.3;
-    color: $color_text_primary;
-    margin: 0;
-
-    @include media($bp_pc) {
-      font-size: s(40);
-    }
-
-    @include media($bp_pcL) {
-      font-size: s(48);
-    }
-
-    @include media($bp_tab) {
-      font-size: s(28);
-    }
-  }
-
-  &__description {
-    font-family: $font-f_notosans;
-    font-size: s(16);
-    line-height: 1.6;
-    color: $color_text_secondary;
-    margin: 0;
-
-    @include media($bp_pc) {
-      font-size: s(18);
-    }
-  }
-
-  &__actions {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: s(8);
-  }
-
-  &__button {
-    @include media($bp_tab) {
-      width: 100%;
-      max-width: s(300);
     }
   }
 }

@@ -264,7 +264,7 @@ $colors: (
     // テキスト色
     text: (
         primary: #fafafa,
-        secondary: rgba(#fafafa, 0.7),
+        secondary: rgba(#fafafa, 0.95),
         dark: #ffffff,
         link: #fafafa,
       ),
@@ -332,12 +332,12 @@ $color_text_link: color-var('text', 'link');
 
 // 背景色
 $color_bg_base: color-var('bg', 'base');
-$color_button_bg: color-var('bg', 'button');
-$color_tag_bg: color-var('bg', 'tag');
+$color_bg_button: color-var('bg', 'button');
+$color_bg_tag: color-var('bg', 'tag');
 $color_bg_hover: color-var('bg', 'hover');
 
 // ボーダー色
-$color_tag_border: color-var('border', 'tag');
+$color_border_tag: color-var('border', 'tag');
 $color_border_primary: color-var('border', 'primary');
 $color_border_light: color-var('border', 'light');
 

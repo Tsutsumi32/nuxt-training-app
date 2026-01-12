@@ -1,69 +1,53 @@
 <template>
-  <div class="works-page">
-    <!-- Header Section -->
-    <section class="works__header works-header">
-      <div class="works-header__container">
-        <h1 class="works-header__title">Works</h1>
-        <p class="works-header__description">制作実績を紹介します</p>
-      </div>
-    </section>
+  <AppLowerPage>
+    <div class="works-page">
+      <!-- Header Section -->
+      <section class="works__header works-header">
+        <BaseContainer>
+          <div class="works-header__title">
+            <BaseSectionTitle tag="h1">WORKS</BaseSectionTitle>
+          </div>
+          <p class="works-header__description">制作実績を紹介いたします</p>
+        </BaseContainer>
+      </section>
 
-    <!-- Category Filter -->
-    <section v-if="categories.length > 0" class="works__filters works-filters">
-      <div class="works-filters__container">
-        <div class="works-filters__list">
-          <button
-            v-for="category in categories"
-            :key="category.id"
-            :class="['works-filters__button', { 'is-active': selectedCategory === category.id }]"
-            @click="selectCategory(category.id)"
-          >
-            {{ category.name }}
-          </button>
-        </div>
-      </div>
-    </section>
+      <!-- Category Filter -->
+      <section v-if="categories.length > 0" class="works__filters works-filters">
+        <BaseContainer>
+          <div class="works-filters__list">
+            <button
+              v-for="category in categories"
+              :key="category.id"
+              :class="['works-filters__button', { 'is-active': selectedCategory === category.id }]"
+              @click="selectCategory(category.id)"
+            >
+              {{ category.name }}
+            </button>
+          </div>
+        </BaseContainer>
+      </section>
 
-    <!-- Works List -->
-    <section class="works__list works-list">
-      <div class="works-list__container">
-        <div v-if="worksList.length > 0" class="works-list__grid">
-          <NuxtLink
-            v-for="work in worksList"
-            :key="work.id"
-            :to="`/works/${work.id}`"
-            class="works-list__item works-item"
-          >
-            <div class="works-item__image-wrapper">
-              <img
-                :src="work.thumbnail.url"
-                :alt="work.title"
-                class="works-item__image"
-                :width="work.thumbnail.width"
-                :height="work.thumbnail.height"
-              />
-              <span class="works-item__category">{{ work.category.name }}</span>
-            </div>
-            <div class="works-item__content">
-              <h3 class="works-item__title">
-                <template v-for="(line, index) in work.title.split(/<br\s*\/?>/i)" :key="index">
-                  <template v-if="Number(index) > 0"><br /></template>
-                  {{ line }}
-                </template>
-              </h3>
-              <p class="works-item__client">{{ work.client }}</p>
-            </div>
-          </NuxtLink>
-        </div>
-        <div v-else-if="isLoading" class="works-list__loading">
-          <p>実績データを読み込み中...</p>
-        </div>
-        <div v-else class="works-list__empty">
-          <p>該当する実績がありません</p>
-        </div>
-      </div>
-    </section>
-  </div>
+      <!-- Works List -->
+      <section class="works__list works-list">
+        <BaseContainer>
+          <ul v-if="worksList.length > 0" class="works-list__grid">
+            <li v-for="work in worksList" :key="work.id">
+              <FeaturesWorksWorkCard :work="work" />
+            </li>
+          </ul>
+          <div v-else-if="isLoading" class="works-list__loading">
+            <p>実績データを読み込み中...</p>
+          </div>
+          <div v-else class="works-list__empty">
+            <p>該当する実績がありません</p>
+          </div>
+        </BaseContainer>
+      </section>
+
+      <!-- Contact Section -->
+      <FeaturesContactCard />
+    </div>
+  </AppLowerPage>
 </template>
 
 <script setup lang="ts">
@@ -135,21 +119,15 @@ const selectCategory = (categoryId: string) => {
 
 // Header Section
 .works__header {
-  padding-block: s(60) s(40);
+  padding-bottom: s(40);
   background-color: $color_bg_base;
 
-  @include media($bp_tab) {
-    padding-block: s(40) s(32);
+  @include media($bp_pc) {
+    padding-bottom: s(60);
   }
 }
 
 .works-header {
-  &__container {
-    @include container;
-    max-width: 1200px;
-    text-align: center;
-  }
-
   &__title {
     font-family: $font-f_rocknroll-one;
     font-weight: 500;
@@ -185,16 +163,12 @@ const selectCategory = (categoryId: string) => {
 }
 
 .works-filters {
-  &__container {
-    @include container;
-    max-width: 1200px;
-  }
-
   &__list {
     display: flex;
     flex-wrap: wrap;
     gap: s(12);
-    justify-content: center;
+    width: fit-content;
+    margin-inline: auto;
 
     @include media($bp_pc) {
       gap: s(16);
@@ -234,28 +208,35 @@ const selectCategory = (categoryId: string) => {
 
 // Works List Section
 .works__list {
-  padding-block: s(60) s(80);
+  padding-top: s(60);
   background-color: $color_bg_base;
 
   @include media($bp_tab) {
-    padding-block: s(40) s(60);
+    padding-top: s(40);
   }
 }
 
 .works-list {
-  &__container {
-    @include container;
-    max-width: 1200px;
-  }
-
   &__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(s(300), 1fr));
+    grid-template-columns: 1fr;
     gap: s(24);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    @include media($bp_tab) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: s(16);
+    }
+
+    @include media($bp_tabL) {
+      gap: s(24);
+    }
 
     @include media($bp_pc) {
-      grid-template-columns: repeat(auto-fill, minmax(s(350), 1fr));
-      gap: s(32);
+      grid-template-columns: repeat(3, 1fr);
+      gap: s(30);
     }
   }
 
@@ -270,103 +251,6 @@ const selectCategory = (categoryId: string) => {
       line-height: 1.6;
       color: $color_text_secondary;
       margin: 0;
-    }
-  }
-}
-
-// Works Item
-.works-item {
-  display: flex;
-  flex-direction: column;
-  border: s(4) solid $color_base_black;
-  background-color: $color_bg_base;
-  border-radius: s(8);
-  box-shadow: s(-6) s(6) 0 0 rgba(0, 0, 0, 1);
-  overflow: hidden;
-  text-decoration: none;
-  color: inherit;
-  transition: all $transition_normal;
-
-  @include hover {
-    transform: translate(s(-2), s(-2));
-    box-shadow: s(-8) s(8) 0 0 rgba(0, 0, 0, 1);
-  }
-
-  &__image-wrapper {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    overflow: hidden;
-    background-color: $color_bg_base;
-  }
-
-  &__image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform $transition_normal;
-  }
-
-  @include hover {
-    transform: scale(1.05);
-  }
-
-  &__category {
-    position: absolute;
-    top: s(12);
-    right: s(12);
-    font-family: $font-f_notosans;
-    font-size: s(12);
-    line-height: 1.4;
-    color: $color_text_primary;
-    background-color: $color_base_white;
-    padding: s(6) s(12);
-    border-radius: s(100);
-    border: s(2) solid $color_base_black;
-    font-weight: 500;
-
-    @include media($bp_pc) {
-      font-size: s(14);
-      padding: s(8) s(16);
-    }
-  }
-
-  &__content {
-    padding: s(20);
-    display: flex;
-    flex-direction: column;
-    gap: s(8);
-    flex: 1;
-
-    @include media($bp_pc) {
-      padding: s(24);
-      gap: s(12);
-    }
-  }
-
-  &__title {
-    font-family: $font-f_rocknroll-one;
-    font-weight: 700;
-    font-size: s(20);
-    line-height: 1.4;
-    color: $color_text_primary;
-    margin: 0;
-
-    @include media($bp_pc) {
-      font-size: s(24);
-    }
-  }
-
-  &__client {
-    font-family: $font-f_notosans;
-    font-size: s(14);
-    line-height: 1.5;
-    color: $color_text_secondary;
-    margin: 0;
-
-    @include media($bp_pc) {
-      font-size: s(16);
     }
   }
 }

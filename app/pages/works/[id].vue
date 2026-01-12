@@ -1,208 +1,185 @@
 <template>
-  <div class="works-detail-page">
-    <div v-if="work" class="works-detail">
-      <!-- Main Visual -->
-      <section class="works-detail__mv works-detail-mv">
-        <div class="works-detail-mv__container">
-          <div class="works-detail-mv__image-wrapper">
-            <img
-              :src="work.thumbnail.url"
-              :alt="work.title"
-              class="works-detail-mv__image"
-              :width="work.thumbnail.width"
-              :height="work.thumbnail.height"
-            />
-          </div>
-          <div class="works-detail-mv__info-wrapper">
-            <h1 class="works-detail-mv__title">
-              <template v-for="(line, index) in work.title.split(/<br\s*\/?>/i)" :key="index">
-                <template v-if="Number(index) > 0"><br /></template>
-                {{ line }}
-              </template>
-            </h1>
-            <div class="works-detail-mv__info">
-              <p class="works-detail-mv__client">{{ work.client }}</p>
-              <div class="works-detail-mv__data-list">
-                <div v-if="work.category" class="works-detail-mv__data">
-                  <span class="works-detail-mv__data-label">Category</span>
-                  <span class="works-detail-mv__data-value">{{ work.category.name }}</span>
-                </div>
-                <div v-if="work.launch_date" class="works-detail-mv__data">
-                  <span class="works-detail-mv__data-label">Launch</span>
-                  <span class="works-detail-mv__data-value">{{
-                    formatDate(work.launch_date)
-                  }}</span>
-                </div>
-                <div v-if="work.url" class="works-detail-mv__data">
-                  <span class="works-detail-mv__data-label">URL</span>
-                  <a
-                    :href="work.url"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="works-detail-mv__data-link"
-                  >
-                    {{ work.url }}
-                  </a>
+  <AppLowerPage>
+    <div class="works-detail-page">
+      <div v-if="work" class="works-detail">
+        <!-- Main Visual -->
+        <section class="works-detail__mv works-detail-mv">
+          <BaseContainer class="works-detail-mv__wrapper">
+            <div class="works-detail-mv__image-wrapper">
+              <img
+                :src="work.thumbnail.url"
+                :alt="work.title"
+                class="works-detail-mv__image"
+                :width="work.thumbnail.width"
+                :height="work.thumbnail.height"
+              />
+            </div>
+            <div class="works-detail-mv__info-wrapper">
+              <h1 class="works-detail-mv__title">
+                <template v-for="(line, index) in work.title.split(/<br\s*\/?>/i)" :key="index">
+                  <template v-if="Number(index) > 0"><br /></template>
+                  {{ line }}
+                </template>
+              </h1>
+              <div class="works-detail-mv__info">
+                <p class="works-detail-mv__client">{{ work.client }}</p>
+                <div class="works-detail-mv__data-list">
+                  <div v-if="work.category" class="works-detail-mv__data">
+                    <span class="works-detail-mv__data-label">Category</span>
+                    <span class="works-detail-mv__data-value">{{ work.category.name }}</span>
+                  </div>
+                  <div v-if="work.launch_date" class="works-detail-mv__data">
+                    <span class="works-detail-mv__data-label">Launch</span>
+                    <span class="works-detail-mv__data-value">{{
+                      formatDate(work.launch_date)
+                    }}</span>
+                  </div>
+                  <div v-if="work.url" class="works-detail-mv__data">
+                    <span class="works-detail-mv__data-label">URL</span>
+                    <a
+                      :href="work.url"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="works-detail-mv__data-link"
+                    >
+                      {{ work.url }}
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
+          </BaseContainer>
+        </section>
 
-      <!-- Content Section -->
-      <section class="works-detail__content works-detail-content">
-        <div class="works-detail-content__container">
-          <div v-if="work.overview" class="works-detail-content__overview">
-            <h2 class="works-detail-content__section-title">概要</h2>
-            <p class="works-detail-content__text" v-html="convertLineBreaks(work.overview)"></p>
-          </div>
+        <!-- Content Section -->
+        <AppSection padding="top">
+          <BaseContainer>
+            <div v-if="work.overview" class="works-detail-content__overview">
+              <h2 class="works-detail-content__section-title">概要</h2>
+              <p class="works-detail-content__text" v-html="convertLineBreaks(work.overview)"></p>
+            </div>
 
-          <div class="works-detail-content__list">
-            <div v-if="work.target" class="works-detail-content__item">
-              <h3 class="works-detail-content__label">ターゲット</h3>
+            <div class="works-detail-content__list">
+              <div v-if="work.target" class="works-detail-content__item">
+                <h3 class="works-detail-content__label">ターゲット</h3>
+                <div
+                  class="works-detail-content__explain"
+                  v-html="convertLineBreaks(work.target)"
+                ></div>
+              </div>
+              <div v-if="work.subject" class="works-detail-content__item">
+                <h3 class="works-detail-content__label">課題・目的</h3>
+                <div
+                  class="works-detail-content__explain"
+                  v-html="convertLineBreaks(work.subject)"
+                ></div>
+              </div>
+              <div v-if="work.information_plan" class="works-detail-content__item">
+                <h3 class="works-detail-content__label">情報・デザイン</h3>
+                <div
+                  class="works-detail-content__explain"
+                  v-html="convertLineBreaks(work.information_plan)"
+                ></div>
+              </div>
+              <div v-if="work.period" class="works-detail-content__item">
+                <h3 class="works-detail-content__label">製作期間</h3>
+                <div
+                  class="works-detail-content__explain"
+                  v-html="convertLineBreaks(work.period)"
+                ></div>
+              </div>
+              <div v-if="work.tool && !isEmptyValue(work.tool)" class="works-detail-content__item">
+                <h3 class="works-detail-content__label">使用ツール</h3>
+                <div
+                  class="works-detail-content__explain"
+                  v-html="convertLineBreaks(work.tool)"
+                ></div>
+              </div>
               <div
-                class="works-detail-content__explain"
-                v-html="convertLineBreaks(work.target)"
-              ></div>
+                v-if="work.in_charge && !isEmptyValue(work.in_charge)"
+                class="works-detail-content__item"
+              >
+                <h3 class="works-detail-content__label">担当業務</h3>
+                <div
+                  class="works-detail-content__explain"
+                  v-html="convertLineBreaks(work.in_charge)"
+                ></div>
+              </div>
             </div>
-            <div v-if="work.subject" class="works-detail-content__item">
-              <h3 class="works-detail-content__label">課題・目的</h3>
-              <div
-                class="works-detail-content__explain"
-                v-html="convertLineBreaks(work.subject)"
-              ></div>
-            </div>
-            <div v-if="work.information_plan" class="works-detail-content__item">
-              <h3 class="works-detail-content__label">情報・デザイン</h3>
-              <div
-                class="works-detail-content__explain"
-                v-html="convertLineBreaks(work.information_plan)"
-              ></div>
-            </div>
-            <div v-if="work.period" class="works-detail-content__item">
-              <h3 class="works-detail-content__label">製作期間</h3>
-              <div
-                class="works-detail-content__explain"
-                v-html="convertLineBreaks(work.period)"
-              ></div>
-            </div>
-            <div v-if="work.tool" class="works-detail-content__item">
-              <h3 class="works-detail-content__label">使用ツール</h3>
-              <div
-                class="works-detail-content__explain"
-                v-html="convertLineBreaks(work.tool)"
-              ></div>
-            </div>
-            <div v-if="work.in_charge" class="works-detail-content__item">
-              <h3 class="works-detail-content__label">担当業務</h3>
-              <div
-                class="works-detail-content__explain"
-                v-html="convertLineBreaks(work.in_charge)"
-              ></div>
-            </div>
-          </div>
-        </div>
-      </section>
+          </BaseContainer>
+        </AppSection>
 
-      <!-- Materials Section -->
-      <section
-        v-if="work.materials && work.materials.length > 0"
-        class="works-detail__materials works-detail-materials"
-      >
-        <div class="works-detail-materials__container">
-          <h2 class="works-detail-materials__title">資料・スクリーンショット</h2>
-          <div class="works-detail-materials__grid">
-            <div
-              v-for="(material, index) in work.materials"
-              :key="index"
-              class="works-detail-materials__item"
-            >
-              <img
-                :src="material.url"
-                :alt="`資料 ${String((index as number) + 1)}`"
-                class="works-detail-materials__image"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Productions Section -->
-      <section
-        v-if="work.productions && work.productions.length > 0"
-        class="works-detail__productions works-detail-productions"
-      >
-        <div class="works-detail-productions__container">
-          <h2 class="works-detail-productions__title">制作物</h2>
-          <div class="works-detail-productions__grid">
-            <div
-              v-for="(production, index) in work.productions"
-              :key="index"
-              class="works-detail-productions__item"
-            >
-              <img
-                :src="production.url"
-                :alt="`制作物 ${String((index as number) + 1)}`"
-                class="works-detail-productions__image"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Related Works Section -->
-      <section
-        v-if="relatedWorks && relatedWorks.length > 0"
-        class="works-detail__related works-detail-related"
-      >
-        <div class="works-detail-related__container">
-          <h2 class="works-detail-related__title">関連実績</h2>
-          <div class="works-detail-related__grid">
-            <NuxtLink
-              v-for="relatedWork in relatedWorks"
-              :key="relatedWork.id"
-              :to="`/works/${relatedWork.id}`"
-              class="works-detail-related__item"
-            >
-              <div class="works-detail-related__image-wrapper">
+        <!-- Materials Section -->
+        <AppSection
+          v-if="work.materials && work.materials.length > 0"
+          padding="top"
+          class="works-detail__materials works-detail-materials"
+        >
+          <BaseContainer>
+            <h2 class="works-detail-materials__title">資料・スクリーンショット</h2>
+            <div class="works-detail-materials__grid">
+              <div
+                v-for="(material, index) in work.materials"
+                :key="index"
+                class="works-detail-materials__item"
+              >
                 <img
-                  :src="relatedWork.thumbnail.url"
-                  :alt="relatedWork.title"
-                  class="works-detail-related__image"
+                  :src="material.url"
+                  :alt="`資料 ${String((index as number) + 1)}`"
+                  class="works-detail-materials__image"
                 />
               </div>
-              <div class="works-detail-related__content">
-                <h3 class="works-detail-related__title-item">
-                  <template
-                    v-for="(line, index) in relatedWork.title.split(/<br\s*\/?>/i)"
-                    :key="index"
-                  >
-                    <template v-if="Number(index) > 0"><br /></template>
-                    {{ line }}
-                  </template>
-                </h3>
-                <p class="works-detail-related__client">{{ relatedWork.client }}</p>
-              </div>
-            </NuxtLink>
-          </div>
-        </div>
-      </section>
+            </div>
+          </BaseContainer>
+        </AppSection>
 
-      <!-- Back Link -->
-      <section class="works-detail__back works-detail-back">
-        <div class="works-detail-back__container">
-          <BaseButton to="/works" variant="primary" size="large"> すべての実績を見る </BaseButton>
+        <!-- Productions Section -->
+        <AppSection v-if="work.productions && work.productions.length > 0" padding="top">
+          <BaseContainer>
+            <h2 class="works-detail-productions__title">制作物</h2>
+            <div class="works-detail-productions__grid">
+              <div
+                v-for="(production, index) in work.productions"
+                :key="index"
+                class="works-detail-productions__item"
+              >
+                <img
+                  :src="production.url"
+                  :alt="`制作物 ${String((index as number) + 1)}`"
+                  class="works-detail-productions__image"
+                />
+              </div>
+            </div>
+          </BaseContainer>
+        </AppSection>
+
+        <!-- Related Works Section -->
+        <AppSection v-if="relatedWorks && relatedWorks.length > 0" padding="top">
+          <BaseContainer>
+            <h2 class="works-detail-related__title">関連実績</h2>
+            <ul class="works-detail-related__grid">
+              <li v-for="relatedWork in relatedWorks" :key="relatedWork.id">
+                <FeaturesWorksWorkCard :work="relatedWork" />
+              </li>
+            </ul>
+          </BaseContainer>
+        </AppSection>
+
+        <!-- Back Link -->
+        <div class="works-detail__back works-detail-back">
+          <BaseContainer class="works-detail-back__wrapper">
+            <BaseButton to="/works" variant="primary" size="large"> すべての実績を見る </BaseButton>
+          </BaseContainer>
         </div>
-      </section>
-    </div>
-    <div v-else class="works-detail__not-found">
-      <div class="works-detail-not-found__container">
-        <h1>実績が見つかりません</h1>
-        <BaseButton to="/works" variant="primary" size="large"> 実績一覧に戻る </BaseButton>
+      </div>
+      <div v-else class="works-detail__not-found">
+        <BaseContainer class="works-detail-not-found__wrapper">
+          <h1>実績が見つかりません</h1>
+          <BaseButton to="/works" variant="primary" size="large"> 実績一覧に戻る </BaseButton>
+        </BaseContainer>
       </div>
     </div>
-  </div>
+  </AppLowerPage>
 </template>
 
 <script setup lang="ts">
@@ -213,7 +190,7 @@ const workId = computed(() => route.params.id as string);
 
 // Works詳細データを取得（useFetchでサーバーサイド実行）
 // workIdが変更されたときに自動的に再取得されるようにkeyを設定
-const { data: workData, error: workError } = await useFetch<Works>(
+const { data: workData, error: _workError } = await useFetch<Works>(
   () => `/api/works/${workId.value}`,
   {
     key: () => `works-${workId.value}`,
@@ -250,15 +227,47 @@ const relatedWorks = computed(() => {
     .slice(0, 5);
 });
 
+// 空の値かどうかをチェック（配列の文字列表現「["..."]」を検出して除外）
+const isEmptyValue = (value: string | undefined): boolean => {
+  if (!value) return true;
+  const trimmed = value.trim();
+  // 空文字列
+  if (trimmed === '') return true;
+  // 空配列の文字列表現
+  if (trimmed === '[]' || trimmed === '[""]') return true;
+  // 配列の文字列表現「["..."]」を検出（JSON配列としてパースして判定）
+  if (trimmed.startsWith('[') && trimmed.endsWith(']')) {
+    try {
+      const parsed = JSON.parse(trimmed);
+      if (Array.isArray(parsed)) {
+        // 配列の文字列表現の場合は除外
+        return true;
+      }
+    } catch {
+      // JSONパースに失敗した場合は通常の文字列として扱う
+    }
+  }
+  return false;
+};
+
 // 改行コードを<br>タグに変換
 const convertLineBreaks = (text: string | undefined): string => {
-  if (!text) return '';
+  if (!text || isEmptyValue(text)) return '';
   return text.replace(/\n/g, '<br>');
 };
 
-// 日付フォーマット
+// 日付フォーマット（ハイドレーションエラーを防ぐため、UTCとして扱う）
 const formatDate = (dateString: string | undefined): string => {
   if (!dateString) return '';
+  // YYYY-MM-DD形式の日付文字列を直接パース（UTCとして扱う）
+  const dateMatch = dateString.match(/^(\d{4})-(\d{2})-(\d{2})/);
+  if (dateMatch && dateMatch[1] && dateMatch[2] && dateMatch[3]) {
+    const year = parseInt(dateMatch[1], 10);
+    const month = parseInt(dateMatch[2], 10);
+    const day = parseInt(dateMatch[3], 10);
+    return `${year}年${month}月${day}日`;
+  }
+  // フォールバック：既存の処理
   const date = new Date(dateString);
   const year = date.getFullYear();
   const month = date.getMonth() + 1;
@@ -298,23 +307,16 @@ useHead(() => {
 
 // Main Visual
 .works-detail__mv {
-  padding-block: s(60) s(40);
   background-color: $color_bg_base;
-
-  @include media($bp_tab) {
-    padding-block: s(40) s(32);
-  }
 }
 
 .works-detail-mv {
-  &__container {
-    @include container;
-    max-width: 1200px;
+  &__wrapper {
     display: grid;
     grid-template-columns: 1fr;
-    gap: s(32);
+    gap: s(16);
 
-    @include media($bp_pc) {
+    @include media($bp_tabL) {
       grid-template-columns: 1fr 1fr;
       gap: s(64);
       align-items: center;
@@ -367,7 +369,7 @@ useHead(() => {
   &__info {
     padding: s(24);
     border: s(3) solid $color_base_black;
-    background-color: $color_button_bg;
+    background-color: $color_bg_button;
     border-radius: s(16);
     display: flex;
     flex-direction: column;
@@ -375,6 +377,10 @@ useHead(() => {
 
     @include media($bp_pc) {
       padding: s(32);
+    }
+
+    @include mode($theme_dark) {
+      background-color: $color_bg_tag;
     }
   }
 
@@ -439,7 +445,7 @@ useHead(() => {
     font-family: $font-f_notosans;
     font-size: s(14);
     line-height: 1.5;
-    color: $color_text_secondary;
+    color: $color_text_primary;
 
     @include media($bp_pc) {
       font-size: s(16);
@@ -475,18 +481,13 @@ useHead(() => {
 }
 
 .works-detail-content {
-  &__container {
-    @include container;
-    max-width: 900px;
-  }
-
   &__overview {
     margin-bottom: s(48);
   }
 
   &__section-title {
-    font-family: $font-f_rocknroll-one;
-    font-weight: 500;
+    font-family: $font-f_notosans;
+    font-weight: 700;
     font-size: s(28);
     line-height: 1.4;
     color: $color_text_primary;
@@ -499,7 +500,7 @@ useHead(() => {
 
   &__text {
     font-family: $font-f_notosans;
-    font-size: s(16);
+    font-size: s(15);
     line-height: 1.8;
     color: $color_text_primary;
     margin: 0;
@@ -513,31 +514,11 @@ useHead(() => {
   &__list {
     display: flex;
     flex-direction: column;
-    gap: s(40);
+    gap: s(32);
   }
 
   &__item {
     position: relative;
-    padding-left: s(32);
-    padding-bottom: s(24);
-
-    &::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: s(8);
-      width: s(24);
-      height: s(24);
-      border-radius: 50%;
-      background-color: $color_base_white;
-      border: s(3) solid $color_base_black;
-      box-shadow: s(4) s(4) 0 0 rgba(0, 0, 0, 0.2);
-
-      @include media($bp_pc) {
-        width: s(32);
-        height: s(32);
-      }
-    }
   }
 
   &__label {
@@ -583,11 +564,6 @@ useHead(() => {
 }
 
 .works-detail-materials {
-  &__container {
-    @include container;
-    max-width: 1200px;
-  }
-
   &__title {
     font-family: $font-f_rocknroll-one;
     font-weight: 500;
@@ -641,14 +617,9 @@ useHead(() => {
 }
 
 .works-detail-productions {
-  &__container {
-    @include container;
-    max-width: 1200px;
-  }
-
   &__title {
-    font-family: $font-f_rocknroll-one;
-    font-weight: 500;
+    font-family: $font-f_notosans;
+    font-weight: 700;
     font-size: s(28);
     line-height: 1.4;
     color: $color_text_primary;
@@ -699,14 +670,9 @@ useHead(() => {
 }
 
 .works-detail-related {
-  &__container {
-    @include container;
-    max-width: 1200px;
-  }
-
   &__title {
-    font-family: $font-f_rocknroll-one;
-    font-weight: 500;
+    font-family: $font-f_notosans;
+    font-weight: 700;
     font-size: s(28);
     line-height: 1.4;
     color: $color_text_primary;
@@ -721,93 +687,40 @@ useHead(() => {
 
   &__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(s(280), 1fr));
+    grid-template-columns: 1fr;
     gap: s(24);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    @include media($bp_tab) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: s(16);
+    }
+
+    @include media($bp_tabL) {
+      gap: s(24);
+    }
 
     @include media($bp_pc) {
-      grid-template-columns: repeat(auto-fill, minmax(s(320), 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: s(32);
-    }
-  }
-
-  &__item {
-    display: flex;
-    flex-direction: column;
-    border: s(4) solid $color_base_black;
-    background-color: $color_bg_base;
-    border-radius: s(8);
-    box-shadow: s(-4) s(4) 0 0 rgba(0, 0, 0, 1);
-    overflow: hidden;
-    text-decoration: none;
-    color: inherit;
-    transition: all $transition_normal;
-
-    @include hover {
-      transform: translate(s(-2), s(-2));
-      box-shadow: s(-6) s(6) 0 0 rgba(0, 0, 0, 1);
-    }
-  }
-
-  &__image-wrapper {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    overflow: hidden;
-  }
-
-  &__image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  &__content {
-    padding: s(16);
-    display: flex;
-    flex-direction: column;
-    gap: s(8);
-  }
-
-  &__title-item {
-    font-family: $font-f_rocknroll-one;
-    font-weight: 700;
-    font-size: s(18);
-    line-height: 1.4;
-    color: $color_text_primary;
-    margin: 0;
-
-    @include media($bp_pc) {
-      font-size: s(20);
-    }
-  }
-
-  &__client {
-    font-family: $font-f_notosans;
-    font-size: s(12);
-    line-height: 1.5;
-    color: $color_text_secondary;
-    margin: 0;
-
-    @include media($bp_pc) {
-      font-size: s(14);
     }
   }
 }
 
 // Back Link Section
 .works-detail__back {
-  padding-block: s(60) s(80);
+  padding-top: s(60);
   background-color: $color_bg_base;
 
-  @include media($bp_tab) {
-    padding-block: s(40) s(60);
+  @include media($bp_pc) {
+    padding-top: s(80);
   }
 }
 
 .works-detail-back {
-  &__container {
-    @include container;
-    max-width: 1200px;
+  &__wrapper {
     display: flex;
     justify-content: center;
   }
@@ -821,9 +734,7 @@ useHead(() => {
 }
 
 .works-detail-not-found {
-  &__container {
-    @include container;
-    max-width: 600px;
+  &__wrapper {
     display: flex;
     flex-direction: column;
     gap: s(32);

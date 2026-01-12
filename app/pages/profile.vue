@@ -1,182 +1,176 @@
 <template>
-  <div class="profile-page">
-    <!-- Main Visual Section -->
-    <section class="profile__mv profile-mv">
-      <div class="profile-mv__container">
-        <div class="profile-mv__content">
-          <div class="profile-mv__image-wrapper">
-            <img src="/images/profile/img_profile.png" alt="Profile" class="profile-mv__image" />
+  <AppLowerPage>
+    <div class="profile-page">
+      <!-- Main Visual Section -->
+      <section>
+        <BaseContainer>
+          <div class="profile-mv__content">
+            <div class="profile-mv__image-wrapper">
+              <img src="/images/profile/img_profile.png" alt="Profile" class="profile-mv__image" />
+            </div>
+            <div class="profile-mv__text-wrapper">
+              <div class="profile-mv__title">
+                <BaseSectionTitle tag="h1">PROFILE</BaseSectionTitle>
+              </div>
+              <div class="profile-mv__text-content">
+                <p class="profile-mv__text">
+                  堤 颯輝 ( Satsuki Tsutsumi )<br />
+                  屋号「I Thing Studio (アイシングスタジオ)」
+                </p>
+                <p class="profile-mv__text">
+                  1996年生まれ。<br />
+                  理系の大学を卒業後、<br />
+                  アパレル業界、飲食業界、営業、製造業等様々な業務を経験。<br />
+                  2021年にWEB業界へ参入。<br />
+                  システム開発の設計・実装・テスト、スマホアプリ検証等も経験。<br />
+                  現在は主にWEB制作分野において、<br />
+                  フロントエンド開発やデザインを行っている。<br />
+                  常に今よりも「より良く」を目指して、日々制作・学習に励んでいる。
+                </p>
+                <p class="profile-mv__text">
+                  趣味は絵を描くこと。<br />
+                  WEBの仕事の傍ら、絵を描く活動を行っている。
+                </p>
+              </div>
+            </div>
           </div>
-          <div class="profile-mv__text-wrapper">
-            <h1 class="profile-mv__title">Profile</h1>
-            <div class="profile-mv__text-content">
-              <p class="profile-mv__text">
-                堤 颯輝 ( Satsuki Tsutsumi )<br />
-                屋号「I Thing Studio (アイシングスタジオ)」
+        </BaseContainer>
+      </section>
+
+      <!-- Catch Section -->
+      <AppSection padding="top">
+        <BaseContainer>
+          <h2 class="profile-catch__title">
+            Creative that <br class="hp_hidden_tab_" />captures the essence.
+          </h2>
+          <p class="profile-catch__jp">「 役割を捉えた取り組みを。 」</p>
+          <div class="profile-catch__text">
+            <p>自分は何ができるのか。そこにいる役割は。</p>
+            <p>そして、なぜそれを創るのか。<br class="hp_hidden_tab_">その作品に何を託したいのか。</p>
+            <p>自分の役割・制作の意味を明確にし、遂行する。</p>
+            <p>そのような思考を大切に、<br class="hp_hidden_tab_"></br>日々制作に取り組んでいます。</p>
+          </div>
+        </BaseContainer>
+      </AppSection>
+
+      <!-- Values Section -->
+      <AppSection padding="top">
+        <BaseContainer>
+          <ul class="profile-values__list">
+            <li class="profile-values__item">
+              <p class="profile-values__en">sincerity</p>
+              <h3 class="profile-values__title">誠実</h3>
+              <p class="profile-values__text">
+                責任をもってやり遂げること<br />
+                素直であること
               </p>
-              <p class="profile-mv__text">
-                1996年生まれ。<br />
-                理系の大学を卒業後、<br />
-                アパレル業界、飲食業界、営業、製造業等様々な業務を経験。<br />
-                2021年にWEB業界へ参入。<br />
-                システム開発の設計・実装・テスト、スマホアプリ検証等も経験。<br />
-                現在は主にWEB制作分野において、<br />
-                フロントエンド開発やデザインを行っている。<br />
-                常に今よりも「より良く」を目指して、日々制作・学習に励んでいる。
+            </li>
+            <li class="profile-values__item">
+              <p class="profile-values__en">cooperative</p>
+              <h3 class="profile-values__title">一体性</h3>
+              <p class="profile-values__text">
+                共により良いゴールを<br />
+                目指すこと
               </p>
-              <p class="profile-mv__text">
-                趣味は絵を描くこと。<br />
-                WEBの仕事の傍ら、絵を描く活動を行っている。
+            </li>
+            <li class="profile-values__item">
+              <p class="profile-values__en">ambition</p>
+              <h3 class="profile-values__title">向上心</h3>
+              <p class="profile-values__text">
+                常に成長を志し<br />
+                磨く姿勢を失くさないこと
               </p>
+            </li>
+          </ul>
+        </BaseContainer>
+      </AppSection>
+
+      <!-- Skills Section -->
+      <AppSection padding="top">
+        <BaseContainer>
+          <div class="profile-skills__title">
+            <BaseSectionTitle tag="h1">SKILLS</BaseSectionTitle>
+          </div>
+          <div class="profile-skills__content">
+            <div class="profile-skills__category">
+              <h3 class="profile-skills__category-title">フロントエンド</h3>
+              <ul class="profile-skills__list">
+                <li class="profile-skills__item">HTML</li>
+                <li class="profile-skills__item">CSS</li>
+                <li class="profile-skills__item">SCSS</li>
+                <li class="profile-skills__item">Javascript</li>
+                <li class="profile-skills__item">TypeScript</li>
+                <li class="profile-skills__item">Vue.js</li>
+                <li class="profile-skills__item">Nuxt.js</li>
+                <li class="profile-skills__item">React</li>
+                <li class="profile-skills__item">Next.js</li>
+                <li class="profile-skills__item">Astro.js</li>
+              </ul>
+            </div>
+            <div class="profile-skills__category">
+              <h3 class="profile-skills__category-title">デザイン・ツール</h3>
+              <ul class="profile-skills__list">
+                <li class="profile-skills__item">Illustrator</li>
+                <li class="profile-skills__item">Photoshop</li>
+                <li class="profile-skills__item">XD</li>
+                <li class="profile-skills__item">Figma</li>
+                <li class="profile-skills__item">AfterEffects</li>
+              </ul>
+            </div>
+            <div class="profile-skills__category">
+              <h3 class="profile-skills__category-title">その他</h3>
+              <ul class="profile-skills__list">
+                <li class="profile-skills__item">PHP</li>
+                <li class="profile-skills__item">Laravel</li>
+                <li class="profile-skills__item">Framer</li>
+                <li class="profile-skills__item">Wordpress</li>
+                <li class="profile-skills__item">Docker</li>
+                <li class="profile-skills__item">Git</li>
+                <li class="profile-skills__item">AI</li>
+              </ul>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
+        </BaseContainer>
+      </AppSection>
 
-    <!-- Catch Section -->
-    <section class="profile__catch profile-catch">
-      <div class="profile-catch__container">
-        <h2 class="profile-catch__title">
-          Creative that <br class="profile-catch__br" />captures the essence.
-        </h2>
-        <p class="profile-catch__jp">「 役割を捉えた取り組みを。 」</p>
-        <div class="profile-catch__text">
-          <p>自分は何ができるのか。そこにいる役割は。</p>
-          <p>そして、なぜそれを創るのか。その作品に何を託したいのか。</p>
-          <p>自分の役割・制作の意味を明確にし、遂行する。</p>
-          <p>そのような思考を大切に、日々制作に取り組んでいます。</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Values Section -->
-    <section class="profile__values profile-values">
-      <div class="profile-values__container">
-        <ul class="profile-values__list">
-          <li class="profile-values__item">
-            <p class="profile-values__en">sincerity</p>
-            <h3 class="profile-values__title">誠実</h3>
-            <p class="profile-values__text">
-              責任をもってやり遂げること<br />
-              素直であること
-            </p>
-          </li>
-          <li class="profile-values__item">
-            <p class="profile-values__en">cooperative</p>
-            <h3 class="profile-values__title">一体性</h3>
-            <p class="profile-values__text">
-              共により良いゴールを<br />
-              目指すこと
-            </p>
-          </li>
-          <li class="profile-values__item">
-            <p class="profile-values__en">ambition</p>
-            <h3 class="profile-values__title">向上心</h3>
-            <p class="profile-values__text">
-              常に成長を志し<br />
-              磨く姿勢を失くさないこと
-            </p>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section class="profile__skills profile-skills">
-      <div class="profile-skills__container">
-        <h2 class="profile-skills__title">Skills</h2>
-        <div class="profile-skills__content">
-          <div class="profile-skills__category">
-            <h3 class="profile-skills__category-title">フロントエンド</h3>
-            <ul class="profile-skills__list">
-              <li class="profile-skills__item">HTML</li>
-              <li class="profile-skills__item">CSS</li>
-              <li class="profile-skills__item">SCSS</li>
-              <li class="profile-skills__item">BEM</li>
-              <li class="profile-skills__item">Javascript</li>
-              <li class="profile-skills__item">TypeScript</li>
-              <li class="profile-skills__item">Vue.js</li>
-              <li class="profile-skills__item">Nuxt.js</li>
-              <li class="profile-skills__item">React</li>
-              <li class="profile-skills__item">Astro.js</li>
-            </ul>
+      <!-- Links Section -->
+      <AppSection padding="top">
+        <BaseContainer>
+          <div class="profile-links__grid">
+            <NuxtLink to="/works" class="profile-links__item">
+              <div class="profile-links__image-wrapper">
+                <img src="/images/works/img_works.jpg" alt="Works" class="profile-links__image" />
+                <div class="profile-links__overlay"></div>
+              </div>
+              <div class="profile-links__content">
+                <h3 class="profile-links__title">Works</h3>
+                <p class="profile-links__text">実績一覧ページを見る</p>
+                <BaseButton variant="primary" size="medium" class="profile-links__button">
+                  View Works
+                </BaseButton>
+              </div>
+            </NuxtLink>
+            <NuxtLink to="/tools" class="profile-links__item">
+              <div class="profile-links__image-wrapper">
+                <img src="/images/img_about_gallery.jpg" alt="Gallery" class="profile-links__image" />
+                <div class="profile-links__overlay"></div>
+              </div>
+              <div class="profile-links__content">
+                <h3 class="profile-links__title">Tools</h3>
+                <p class="profile-links__text">ツール一覧ページを見る</p>
+                <BaseButton variant="primary" size="medium" class="profile-links__button">
+                  View Tools
+                </BaseButton>
+              </div>
+            </NuxtLink>
           </div>
-          <div class="profile-skills__category">
-            <h3 class="profile-skills__category-title">デザイン・ツール</h3>
-            <ul class="profile-skills__list">
-              <li class="profile-skills__item">Illustrator</li>
-              <li class="profile-skills__item">Photoshop</li>
-              <li class="profile-skills__item">XD</li>
-              <li class="profile-skills__item">Figma</li>
-              <li class="profile-skills__item">AfterEffects</li>
-              <li class="profile-skills__item">Framer</li>
-            </ul>
-          </div>
-          <div class="profile-skills__category">
-            <h3 class="profile-skills__category-title">その他</h3>
-            <ul class="profile-skills__list">
-              <li class="profile-skills__item">PHP</li>
-              <li class="profile-skills__item">Laravel</li>
-              <li class="profile-skills__item">Wordpress</li>
-              <li class="profile-skills__item">Docker</li>
-              <li class="profile-skills__item">Git</li>
-              <li class="profile-skills__item">Node.js</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
+        </BaseContainer>
+      </AppSection>
 
-    <!-- Links Section -->
-    <section class="profile__links profile-links">
-      <div class="profile-links__container">
-        <div class="profile-links__grid">
-          <NuxtLink to="/works" class="profile-links__item">
-            <div class="profile-links__image-wrapper">
-              <img src="/images/works/img_works.jpg" alt="Works" class="profile-links__image" />
-              <div class="profile-links__overlay"></div>
-            </div>
-            <div class="profile-links__content">
-              <h3 class="profile-links__title">Works</h3>
-              <p class="profile-links__text">実績一覧ページを見る</p>
-              <BaseButton variant="outline" size="medium" class="profile-links__button">
-                View Works
-              </BaseButton>
-            </div>
-          </NuxtLink>
-          <NuxtLink to="/tools" class="profile-links__item">
-            <div class="profile-links__image-wrapper">
-              <img src="/images/img_about_gallery.jpg" alt="Gallery" class="profile-links__image" />
-              <div class="profile-links__overlay"></div>
-            </div>
-            <div class="profile-links__content">
-              <h3 class="profile-links__title">Tools</h3>
-              <p class="profile-links__text">ツール一覧ページを見る</p>
-              <BaseButton variant="outline" size="medium" class="profile-links__button">
-                View Tools
-              </BaseButton>
-            </div>
-          </NuxtLink>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="profile__contact profile-contact">
-      <div class="profile-contact__container">
-        <div class="profile-contact__card">
-          <h2 class="profile-contact__title">お問い合わせ</h2>
-          <p class="profile-contact__description">
-            何かお手伝いできることがあれば、お気軽にお問い合わせください。
-          </p>
-          <div class="profile-contact__button">
-            <BaseButton to="/contact" variant="primary" size="large"> メッセージを送る </BaseButton>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
+      <!-- Contact Section -->
+      <FeaturesContactCard />
+    </div>
+  </AppLowerPage>
 </template>
 
 <script setup lang="ts">
@@ -208,39 +202,47 @@ useHead({
 }
 
 .profile-mv {
-  &__container {
-    @include container;
-    max-width: 1200px;
-  }
-
   &__content {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: s(40);
-    align-items: flex-start;
+    max-width: s(900);
+    margin-inline: auto;
+    @include media($bp_tab) {
+      display: flex;
+      gap: s(40);
+      justify-content: center;
+    }
 
-    @include media($bp_pc) {
-      grid-template-columns: 1fr 1.2fr;
-      gap: s(64);
-      align-items: flex-end;
+    @include media($bp_tabL) {
+      gap: s(40);
     }
   }
 
   &__image-wrapper {
     width: 100%;
     max-width: s(400);
-    aspect-ratio: 1 / 1.3;
+    aspect-ratio: 1 / 1;
     border: s(4) solid $color_base_black;
-    border-radius: s(24);
+    border-radius: 100vh;
     overflow: hidden;
-    box-shadow: s(-8) s(8) 0 0 rgba(0, 0, 0, 0.2);
+    box-shadow: s(-8) s(8) 0 0 rgba(#000, 0.2);
     margin: 0 auto;
     order: 1;
+    padding: s(16);
+    max-width: s(300);
+    margin-bottom: s(24);
+
+    @include media($bp_tab) {
+      width: 38%;
+      height: fit-content;
+    }
 
     @include media($bp_pc) {
       max-width: s(500);
       order: 2;
       margin: 0;
+    }
+
+    @include mode($theme_dark) {
+      box-shadow: s(-8) s(8) 0 0 rgba(#fff, 0.2);
     }
   }
 
@@ -254,27 +256,18 @@ useHead({
   }
 
   &__text-wrapper {
-    order: 2;
-    text-align: center;
 
-    @include media($bp_pc) {
-      order: 1;
-      text-align: left;
+    @include media($bp_tab) {
+      flex-basis: 0;
+      flex-grow: 1;
     }
   }
 
   &__title {
-    font-family: $font-f_rocknroll-one;
-    font-weight: 500;
-    font-size: s(32);
-    line-height: 1.2;
-    color: $color_text_primary;
-    margin-bottom: s(32);
-    margin-top: 0;
+    text-align: center;
 
-    @include media($bp_pc) {
-      font-size: s(40);
-      margin-bottom: s(40);
+    @include media($bp_tab) {
+      text-align: left;
     }
   }
 
@@ -308,28 +301,20 @@ useHead({
 }
 
 .profile-catch {
-  &__container {
-    @include container;
-    max-width: 1000px;
-    text-align: center;
-  }
-
   &__title {
     font-family: $font-f_rocknroll-one;
     font-weight: 500;
-    font-size: s(32);
+    font-size: s(26);
     line-height: 1.3;
     color: $color_text_primary;
     margin: 0;
 
+    @include media($bp_tabL) {
+      font-size: s(32);
+    }
+
     @include media($bp_pc) {
       font-size: s(48);
-    }
-  }
-
-  &__br {
-    @include media($bp_pc) {
-      display: none;
     }
   }
 
@@ -378,11 +363,6 @@ useHead({
 }
 
 .profile-values {
-  &__container {
-    @include container;
-    max-width: 1200px;
-  }
-
   &__list {
     display: grid;
     grid-template-columns: 1fr;
@@ -391,8 +371,12 @@ useHead({
     margin: 0;
     padding: 0;
 
-    @include media($bp_pc) {
+    @include media($bp_tabL) {
       grid-template-columns: repeat(3, 1fr);
+      gap: s(24);
+    }
+
+    @include media($bp_pc) {
       gap: s(40);
     }
   }
@@ -416,11 +400,11 @@ useHead({
   }
 
   &__en {
-    font-family: $font-f_notosans;
+    font-family: $font-f_rocknroll-one;
     font-size: s(14);
     line-height: 1.4;
     background-color: $color_base_black;
-    color: $color_text_primary;
+    color: $color_accent_primary;
     padding: s(8) s(16);
     border-radius: s(8);
     margin: 0;
@@ -460,7 +444,7 @@ useHead({
   }
 
   &__title {
-    font-family: $font-f_rocknroll-one;
+    font-family: $font-f_notosans;
     font-weight: 700;
     font-size: s(24);
     line-height: 1.4;
@@ -472,8 +456,6 @@ useHead({
 
     @include media($bp_pc) {
       font-size: s(28);
-      margin-top: s(24);
-      padding-bottom: s(20);
     }
   }
 
@@ -487,7 +469,6 @@ useHead({
 
     @include media($bp_pc) {
       font-size: s(16);
-      margin-top: s(24);
     }
   }
 }
@@ -503,24 +484,8 @@ useHead({
 }
 
 .profile-skills {
-  &__container {
-    @include container;
-    max-width: 1200px;
-  }
-
   &__title {
-    font-family: $font-f_rocknroll-one;
-    font-weight: 500;
-    font-size: s(32);
-    line-height: 1.2;
-    color: $color_text_primary;
-    margin: 0 0 s(40);
     text-align: center;
-
-    @include media($bp_pc) {
-      font-size: s(40);
-      margin-bottom: s(48);
-    }
   }
 
   &__content {
@@ -528,8 +493,12 @@ useHead({
     grid-template-columns: 1fr;
     gap: s(32);
 
-    @include media($bp_pc) {
+    @include media($bp_tabL) {
       grid-template-columns: repeat(3, 1fr);
+      gap: s(24);
+    }
+
+    @include media($bp_pc) {
       gap: s(40);
     }
   }
@@ -579,13 +548,17 @@ useHead({
     color: $color_text_primary;
     padding: s(12) s(16);
     border: s(2) solid $color_base_black;
-    background-color: $color_button_bg;
+    background-color: $color_bg_button;
     border-radius: s(8);
     box-shadow: s(-2) s(2) 0 0 rgba(0, 0, 0, 0.1);
 
     @include media($bp_pc) {
       font-size: s(16);
       padding: s(14) s(20);
+    }
+
+    @include mode($theme_dark) {
+      background-color: $color_bg_tag;
     }
   }
 }
@@ -601,11 +574,6 @@ useHead({
 }
 
 .profile-links {
-  &__container {
-    @include container;
-    max-width: 1200px;
-  }
-
   &__grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -631,7 +599,7 @@ useHead({
 
     @include hover {
       transform: translate(s(-2), s(-2));
-      box-shadow: s(-8) s(8) 0 0 rgba(0, 0, 0, 1);
+      box-shadow: s(-8) s(8) 0 0 $color_base_black;
     }
 
     @include media($bp_pc) {
@@ -674,11 +642,15 @@ useHead({
     justify-content: flex-end;
     height: 100%;
     gap: s(16);
-    color: $color_text_primary;
+    color: $color_base_white;
 
     @include media($bp_pc) {
       padding: s(48);
       gap: s(24);
+    }
+
+    @include mode($theme_dark) {
+      color: $color_base_black;
     }
   }
 
@@ -708,71 +680,6 @@ useHead({
   &__button {
     margin-top: s(8);
     align-self: flex-start;
-  }
-}
-
-// Contact Section
-.profile__contact {
-  padding-block: s(80) s(60);
-  background-color: $color_bg_base;
-
-  @include media($bp_tab) {
-    padding-block: s(60) s(40);
-  }
-}
-
-.profile-contact {
-  &__container {
-    @include container;
-    max-width: 1000px;
-  }
-
-  &__card {
-    padding: s(48) s(32);
-    border: s(4) solid $color_base_black;
-    background-color: $color_bg_base;
-    box-shadow: s(-8) s(8) 0 0 rgba(0, 0, 0, 1);
-    border-radius: s(4);
-    display: flex;
-    flex-direction: column;
-    gap: s(24);
-    text-align: center;
-
-    @include media($bp_pc) {
-      padding: s(56) s(48);
-      gap: s(32);
-    }
-  }
-
-  &__title {
-    font-family: $font-f_rocknroll-one;
-    font-weight: 500;
-    font-size: s(32);
-    line-height: 1.3;
-    color: $color_text_primary;
-    margin: 0;
-
-    @include media($bp_pc) {
-      font-size: s(40);
-    }
-  }
-
-  &__description {
-    font-family: $font-f_notosans;
-    font-size: s(16);
-    line-height: 1.6;
-    color: $color_text_secondary;
-    margin: 0;
-
-    @include media($bp_pc) {
-      font-size: s(18);
-    }
-  }
-
-  &__button {
-    margin-top: s(8);
-    display: flex;
-    justify-content: center;
   }
 }
 </style>

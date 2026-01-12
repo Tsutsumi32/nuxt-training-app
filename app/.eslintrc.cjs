@@ -23,6 +23,9 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'vue/multi-word-component-names': 'off',
     'vue/no-v-html': 'off',
+    // TypeScriptプロジェクトではno-undefは不要（TypeScriptの型チェックに任せる）
+    'no-undef': 'off',
+    '@typescript-eslint/no-undef': 'off',
     '@typescript-eslint/no-unused-vars': [
       'error',
       {
@@ -30,6 +33,7 @@ module.exports = {
         varsIgnorePattern: '^_',
       },
     ],
+    // any型の使用を許可（必要に応じて緩和）
+    '@typescript-eslint/no-explicit-any': 'warn',
   },
-}
-
+};
