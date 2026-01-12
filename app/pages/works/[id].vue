@@ -633,7 +633,7 @@ useHead(() => {
     grid-template-columns: 1fr;
     gap: s(24);
 
-    @include media($bp_pc) {
+    @include media($bp_tabL) {
       grid-template-columns: repeat(2, 1fr);
       gap: s(32);
     }
