@@ -22,12 +22,8 @@
                 </template>
               </h1>
               <div class="works-detail-mv__info">
-                <p class="works-detail-mv__client">{{ work.client }}</p>
-                <div class="works-detail-mv__data-list">
-                  <div v-if="work.category" class="works-detail-mv__data">
-                    <span class="works-detail-mv__data-label">Category</span>
-                    <span class="works-detail-mv__data-value">{{ work.category.name }}</span>
-                  </div>
+                <p class="works-detail-mv__category">{{ work.category.name }}</p>
+                <div v-if="work.category" class="works-detail-mv__data-list">
                   <div v-if="work.launch_date" class="works-detail-mv__data">
                     <span class="works-detail-mv__data-label">Launch</span>
                     <span class="works-detail-mv__data-value">{{
@@ -384,7 +380,7 @@ useHead(() => {
     }
   }
 
-  &__client {
+  &__category {
     font-family: $font-f_notosans;
     font-size: s(14);
     line-height: 1.5;
